@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { getProducts } from '../redux/actions'
 import Card from './Card'
+import SearchBar from './SearchBar'
 import useCall from './useCall'
 
 type DataProduct = {
@@ -18,8 +21,14 @@ type DataProduct = {
 
 function Home() {
 
+    let dispatch = useDispatch()
+
    let response = useCall<Array<DataProduct>>('https://fakestoreapi.com/products')
-  //  setProducts(products)
+   console.log(response.data) 
+   if(response.data !== null){
+   dispatch(getProducts(response.data))
+   }
+   //  setProducts(products)
 
   return (
     <div className=' min-vh-100'>
@@ -30,12 +39,15 @@ function Home() {
             </div>
         ) 
       }
+      <div className='d-flex justify-content-center mt-3'>
+      <SearchBar />
+      </div>
       <div className='d-flex justify-content-center'>
       <div className='cards'>
         {
-         response.data !== null && response.data.map((e: any)=> {
+         response.data !== null && response.data.map((e: any, i: number)=> {
             return (
-              <Card product={e} />
+              <Card key={i} product={e} />
             )
           })
         }
