@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
-import { getProducts } from '../redux/actions'
+import { getProducts, update } from '../redux/actions'
 import Card from './Card'
+import Filter from './Filter'
 import SearchBar from './SearchBar'
 import useCall from './useCall'
 
@@ -11,10 +13,21 @@ type DataProduct = {
     category: string
     image: string
     price: number
-    rating: {}
+    rating: {
+      rate: number 
+      count: number
+    }
     title: string
+
 }
 
+
+type States = {
+    cart: Array<DataProduct> 
+    products: Array<DataProduct> 
+    vacio : string
+    update: boolean
+}
 
 
 
@@ -22,32 +35,43 @@ type DataProduct = {
 function Home() {
 
     let dispatch = useDispatch()
-
+   let products = useSelector((state : States ) => state.products)
    let response = useCall<Array<DataProduct>>('https://fakestoreapi.com/products')
-   console.log(response.data) 
-   if(response.data !== null){
-   dispatch(getProducts(response.data))
-   }
-   //  setProducts(products)
-
+   let vacio = useSelector((state: States) => state.vacio)
+    let update2 = useSelector((state: States) => state.update)
+   useEffect(() => {
+    console.log(response.data)
+    if(response.data !== null && products.length === 0){
+      dispatch(getProducts(response.data))
+      }
+      dispatch(update())
+   }, [response.data, update2])
   return (
     <div className=' min-vh-100'>
-      {
-        response.state === 'loading' || response.state === 'idle' && (
-            <div>
-              ...Cargando!
-            </div>
-        ) 
-      }
+      
       <div className='d-flex justify-content-center mt-3'>
       <SearchBar />
       </div>
-      <div className='d-flex justify-content-center'>
-      <div className='cards'>
+      <div className=''>
+      <Filter />
+      </div>
+
+      {
+        vacio.length > 0 && (
+          <div>
+            <h2 className='text-center mt-5'>
+              {vacio}
+            </h2>
+          </div>
+        )
+      }
+      <div className='d-flex justify-content-center mt-4'>
+      <div className='cards '>
+        
         {
-         response.data !== null && response.data.map((e: any, i: number)=> {
-            return (
-              <Card key={i} product={e} />
+          products.length > 0 && products.map((e)  => {
+            return(
+              <Card key={e.id} product={e} />
             )
           })
         }
