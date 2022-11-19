@@ -1,18 +1,12 @@
+import { DataProduct, DataProductType } from "../interface/interface"
+
 export const ADD_CART = "ADD_CART"
 export const SEARCH_PRODUCT = "SEARCH_PRODUCT"
 export const GET_PRODUCT = "GET_PRODUCT"
 export const FILTER_PRODUCTS_BY_CATEGORY = "FILTER_PRODUCTS_BY_CATEGORY"
 export const FILTER_PRODUCTS_BY_PRICE = "FILTER_PRODUCTS_BY_PRICE"
 
-type DataProduct = {
-    id: number
-    description: string
-    category: string
-    image: string
-    price: number
-    rating: {}
-    title: string
-}
+
 
 
 export function getProducts(products:Array<DataProduct>){
@@ -57,9 +51,30 @@ export function getAgainProducts(){
     }
 }
 
-export function addFilters(payload: string){
+
+
+export function addCart(product: DataProduct ){
     return{
-        type: "ADD_FILTER",
-        payload: payload
+        type: "ADD_CART",
+        payload: product
+    }
+}
+
+export function deleteCart(idProduct : number){
+    return {
+        type: "DELETE_ITEM",
+        payload: idProduct
+    }
+}
+
+export function seeCart(){
+    return{
+        type: "SEE_CART"
+    }
+}
+
+export function cantSeeCart(){
+    return{
+        type: "DONT_SEE_CART"
     }
 }

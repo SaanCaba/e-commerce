@@ -1,7 +1,7 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { addFilters, filterProducts, filterProductsByPrice} from "../redux/actions";
+import {  filterProducts, filterProductsByPrice} from "../redux/actions";
 
 type DataProduct = {
   id: number
@@ -17,6 +17,9 @@ type DataProduct = {
 
 }
 
+type FilterData = {
+  info : string
+}
 
 type States = {
   cart: Array<DataProduct> 
@@ -27,19 +30,34 @@ type States = {
 function Filter() {
 
 
+  const [filters, setFilters] = useState<string[] | FilterData[]>([])
+
   const dispatch = useDispatch()
   
   const handleFilterCategory = (e: React.FormEvent<HTMLSelectElement>) => {
     dispatch(filterProducts(e.currentTarget.value))
-    dispatch(addFilters(e.currentTarget.value))
+    // dispatch(addFilters(e.currentTarget.value))
+    // let findCopy = filters.find(el => el.includes(e.currentTarget.value))
+    // if(e.currentTarget.value === 'Less expensive' || e.currentTarget.value === 'More expensive'){
+    //   return;
+    // }
+    // if(filters.length === 1){
+    //   setFilters(e.currentTarget.value)
+    //   return;
+    // }
+    // if(!findCopy ){
+    //   setFilters([...filters, e.currentTarget.value])
+    // }
+    // return;
   };
 
   // const products = useSelector((state : States) => state.products)
 
 
-
   return (
-    <div className="d-flex justify-content-center mt-4">
+    <div className="">
+      <div className="d-flex justify-content-center mt-4">
+
       <select onChange={handleFilterCategory} className="m-2">
         <option>Prices</option>
         <option value="Less expensive" >
@@ -64,6 +82,16 @@ function Filter() {
           Women's clothing
         </option>
       </select>
+      </div>
+      {/* <div>
+        {filters.length > 0 && filters.map((e, i) => {
+          return(
+            <div key={i} className='d-flex justify-content-center'>
+            <span>{e}</span>
+            </div>
+          )
+        })}
+      </div> */}
     </div>
   );
 }

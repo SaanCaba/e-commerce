@@ -1,0 +1,31 @@
+.cont-fly-cart{
+    height: 500px;
+    width: 270px;
+    background-color: rgb(181, 70, 70);
+    border: none;
+    border-radius: 12px;
+    right: 0;
+    display: flex;
+    position: fixed;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    word-wrap: break-word;
+    top: 25%;
+    /* margin-right: 6px; */
+}
+
+
+
+.cont-fly-cart::-webkit-scrollbar {
+    width: 7px;
+}
+
+.cont-fly-cart::-webkit-scrollbar-thumb {
+    background: rgb(34, 88, 34);
+    border-radius: 12px;
+}
+
+.cont-fly-cart img {
+    width: 30px;
+}

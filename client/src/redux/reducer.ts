@@ -17,23 +17,28 @@ type Action = {
     type: string | Array<DataProduct>
 }
 
-// type States = {
-//     cart: string[]  | Array<DataProduct>
-//     products: string[] | Array<DataProduct>
-// }
+type States = {
+    cart: Array<DataProduct>
+    products: Array<DataProduct> 
+    allProducts: Array<DataProduct>
+    vacio :string
+    update: boolean
+    onFilter: boolean
+    seeCart: boolean
+}
 
-const initial_state = {
+const initial_state : States = {
     cart:[],
     products: [],
     allProducts: [],
     vacio: '',
     update: false,
     onFilter:false,
-    filters:[]
+    seeCart: false
 }
 
 
-function rootReducer(state = initial_state, action: Action)  {
+function rootReducer(state = initial_state, action: Action) {
         switch(action.type){
           case GET_PRODUCT:
             return{
@@ -71,7 +76,7 @@ function rootReducer(state = initial_state, action: Action)  {
             }
 
             case FILTER_PRODUCTS_BY_CATEGORY:
-            let filterProductsByCategory: DataProduct | string[];
+            let filterProductsByCategory: Array<DataProduct>| string[];
             // let pepe = state.products    
             if(action.payload === 'Less expensive'){
                filterProductsByCategory= state.products.sort((a: DataProduct, b:DataProduct) => a.price - b.price)
@@ -94,7 +99,6 @@ function rootReducer(state = initial_state, action: Action)  {
                 }
             }
             filterProductsByCategory  =  state.allProducts.filter((e : DataProduct )=>{
-                console.log(action.payload)
                     return e.category === action.payload
                 })
 
@@ -109,12 +113,27 @@ function rootReducer(state = initial_state, action: Action)  {
                     ...state,
                     update: false
                 }
-            case "ADD_FILTER":
-                
-                // return{
-                //     ...state,
-                //     filters: action.pa
-                // }
+            case "ADD_CART":
+            return{
+                ...state,
+                cart: [...state.cart, action.payload]
+            }
+            case "SEE_CART":
+            return{
+                ...state,
+                seeCart: true
+            }
+            case "DONT_SEE_CART":
+            return{
+                ...state,
+                seeCart:false
+            }
+            case "DELETE_ITEM":
+                let removeItem = state.cart.filter(el => el.id !== action.payload)
+                return{
+                    ...state,
+                    cart : removeItem
+                }
            default: 
             return state
         }

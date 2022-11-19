@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
+import { Cart } from '../interface/interface'
 import { getProducts, update } from '../redux/actions'
 import Card from './Card'
 import Filter from './Filter'
+import FlyCart from './FlyCart'
 import SearchBar from './SearchBar'
 import useCall from './useCall'
 
@@ -39,13 +41,17 @@ function Home() {
    let response = useCall<Array<DataProduct>>('https://fakestoreapi.com/products')
    let vacio = useSelector((state: States) => state.vacio)
     let update2 = useSelector((state: States) => state.update)
-   useEffect(() => {
-    console.log(response.data)
+  const cart = useSelector((state : Cart ) => state.cart)
+   
+    useEffect(() => {
     if(response.data !== null && products.length === 0){
       dispatch(getProducts(response.data))
       }
       dispatch(update())
    }, [response.data, update2])
+
+
+   
   return (
     <div className=' min-vh-100'>
       
@@ -55,7 +61,10 @@ function Home() {
       <div className=''>
       <Filter />
       </div>
+      <div>
+      {/* <FlyCart /> */}
 
+      </div>
       {
         vacio.length > 0 && (
           <div>
@@ -66,7 +75,7 @@ function Home() {
         )
       }
       <div className='d-flex justify-content-center mt-4'>
-      <div className='cards '>
+      <div className={cart.length === 0 ? 'cards' : 'cards cards-cart'}>
         
         {
           products.length > 0 && products.map((e)  => {
@@ -76,6 +85,8 @@ function Home() {
           })
         }
         </div>
+        {cart.length > 0 && <FlyCart />}
+
         </div>
     </div>
   )
