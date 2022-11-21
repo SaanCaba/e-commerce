@@ -1,18 +1,18 @@
 .cont-fly-cart{
-    height: 500px;
+    height:90%;
     width: 270px;
     background-color: rgb(181, 70, 70);
     border: none;
     border-radius: 12px;
-    right: 0;
+    right: 1%;
     display: flex;
     position: fixed;
     flex-direction: column;
     overflow-x: hidden;
     overflow-y: scroll;
     word-wrap: break-word;
-    top: 25%;
     /* margin-right: 6px; */
+    bottom: 2.8%;
 }
 
 

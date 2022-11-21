@@ -37,3 +37,12 @@ export type CartProduct = {
 export type Cart = {
    cart : CartProduct[]
  }
+
+export interface Error{
+    response : {
+        status: number
+        data: {
+            message: string
+        }
+    }  | undefined
+}

@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
 import { Cart, SeeCart } from '../interface/interface'
 import { cantSeeCart, deleteCart } from '../redux/actions'
+import {AiOutlineShoppingCart} from 'react-icons/ai'
 import './styles/FlyCart.css'
 
 
@@ -61,6 +62,9 @@ function FlyCart() {
     {
         flyCart === true ? (
             <div className='cont-fly-cart'>
+                <div className='m-1 d-flex justify-content-center'>
+                <AiOutlineShoppingCart color='white' size={28} />
+                </div>
                 {cart.map((e, i) => {
                     return(
                         <div key={i} className='m-1' >

@@ -9,6 +9,7 @@ import FlyCart from './FlyCart'
 import SearchBar from './SearchBar'
 import useCall from './useCall'
 
+
 type DataProduct = {
     id: number
     description: string
@@ -36,6 +37,7 @@ type States = {
 
 function Home() {
 
+
     let dispatch = useDispatch()
    let products = useSelector((state : States ) => state.products)
    let response = useCall<Array<DataProduct>>('https://fakestoreapi.com/products')
@@ -50,11 +52,12 @@ function Home() {
       dispatch(update())
    }, [response.data, update2])
 
-
+   const [challengesData, setChallengesData ] = useState('none')
    
+  
+
   return (
     <div className=' min-vh-100'>
-      
       <div className='d-flex justify-content-center mt-3'>
       <SearchBar />
       </div>

@@ -1,3 +1,13 @@
 .nav-title{
     margin-left: 40px;
 }
+
+.nav-cont{
+    position: sticky;
+    position: fixed;
+    width: 100%;
+}
+
+.log{
+    cursor: pointer;
+}

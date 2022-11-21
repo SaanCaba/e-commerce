@@ -17,11 +17,14 @@ const notify =  () => toast('Agregado al carrito');
 
 function Card({product}: DataProductType ) {
   const dispatch = useDispatch()
-  
+  const token = localStorage.getItem('token')
   const cart = useSelector((state : Cart ) => state.cart)
   
   const handleClick = () => {
     let findProduct = cart.find(el => el.id === product.id)
+    if(!token){
+      return toast.error('Necesitas tener usuario para comprar.')
+    }
     if(findProduct){
       return toast.error('No podemos agregar el mismo producto al carrito')
     }

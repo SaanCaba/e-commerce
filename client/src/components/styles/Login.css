@@ -1,0 +1,55 @@
+.cont-2-login{
+    background-image: url(https://images.unsplash.com/photo-1567958451986-2de427a4a0be?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80);
+    filter: blur(2px) brightness(60%);
+}
+
+input{
+    border-radius: 12px;
+    border: 0;
+    padding: 10px;
+    font-weight: bold;
+    
+}
+
+.title-log{
+    margin-bottom: 30px;
+    text-decoration: underline;
+}
+
+
+
+.btn-signin{
+    border-radius: 12px;
+    padding: 9px;
+    font-weight: bold;
+    background-color: rgb(55, 164, 55);
+    color: rgb(34, 33, 33);
+}
+
+.btn-signup{
+    border-radius: 12px;
+    padding: 9px;
+    font-weight: bold;
+    margin-top: 9px;
+    background-color: rgb(55, 164, 55);
+    color: rgb(34, 33, 33);
+}
+
+.cont-1-log{
+    background-image: url(https://images.unsplash.com/photo-1578932750355-5eb30ece487a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80);
+    position: relative;
+}
+
+
+.div-back{
+    height: 100%;
+    width: 100%;
+    backdrop-filter: blur(3px) brightness(60%);
+    display: flex;
+    left: 2%;
+    position:absolute;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Ubuntu', sans-serif;
+}
+

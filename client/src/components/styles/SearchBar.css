@@ -1,3 +1,7 @@
 div input:focus{
     outline: none;
 }
+
+.cont-search{
+    margin-top: 43px;
+}
