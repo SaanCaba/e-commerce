@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link, useHistory } from "react-router-dom";
-import styles from "./styles.module.css";
 import { Error } from "../../interface/interface";
-
+import '../styles/Register.css'
 
 export const Register = () => {
 	const [data, setData] = useState({
@@ -41,25 +40,32 @@ export const Register = () => {
 
 	return (
 		<div>
-			<div >
-				<div >
-					<h1>Welcome Back</h1>
-					<Link to="/login">
-						<button type="button" >
-							Sing in
+			<div className="cont-register vh-100 " >
+				<div className="cont-bk d-flex justify-content-center align-items-center" >
+                    <div className="d-flex flex-column">
+					<div className="d-flex justify-content-center">
+
+                    <Link to="/login">
+						<button className="border-0 btn-signin mb-3" type="button" >
+							Sign in
 						</button>
+                        
 					</Link>
-				</div>
+                    </div>
+
+				
 				<div>
 					<form onSubmit={handleSubmit}>
-						<h1>Create Account</h1>
-						<input
+						<h1 className="text-center title-reg">Create Account</h1>
+						<div className="d-flex flex-column">
+                        <input
 							type="text"
 							placeholder="First Name"
 							name="firstName"
 							onChange={handleChange}
 							value={data.firstName}
 							required
+                            className="inp-register"
 						/>
 						<input
 							type="text"
@@ -68,6 +74,7 @@ export const Register = () => {
 							onChange={handleChange}
 							value={data.lastName}
 							required
+                            className="inp-register"
 						/>
 						<input
 							type="email"
@@ -76,6 +83,7 @@ export const Register = () => {
 							onChange={handleChange}
 							value={data.email}
 							required
+                            className="inp-register"
 						/>
 						<input
 							type="password"
@@ -84,14 +92,18 @@ export const Register = () => {
 							onChange={handleChange}
 							value={data.password}
 							required
+                            className="inp-register"
 						/>
 						{error && <div >{error}</div>}
-						<button type="submit" >
+						<button type="submit" className="btn-reg" >
 							Sing Up
 						</button>
+                        </div>
 					</form>
 				</div>
 			</div>
+            </div>
+            </div>
 		</div>
 	);
 };

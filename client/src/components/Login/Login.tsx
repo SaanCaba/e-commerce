@@ -42,7 +42,7 @@ function Login() {
 
   return (
     <div className="vh-100  row">
-        <div className="text-light bg-success cont-1-log col-3 d-flex align-items-center justify-content-center">
+        <div className="text-light  cont-1-log col-3 d-flex align-items-center justify-content-center">
             <div className="div-back">
 
             <div className="d-flex flex-column blur-back">
@@ -94,7 +94,7 @@ function Login() {
 
         </div>
 
-        <div className="col bg-danger cont-2-login">
+        <div className="col cont-2-login">
         </div>
 
     </div>
