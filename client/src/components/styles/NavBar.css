@@ -5,7 +5,9 @@
 .nav-cont{
     position: sticky;
     position: fixed;
+    height: 50px;
     width: 100%;
+    z-index: 999;
 }
 
 .log{

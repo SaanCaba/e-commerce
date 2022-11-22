@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 import { Cart } from '../interface/interface'
 import { getProducts, update } from '../redux/actions'
 import Card from './Card'
@@ -37,8 +38,9 @@ type States = {
 
 function Home() {
 
-
-    let dispatch = useDispatch()
+  let token = localStorage.getItem('token')
+  let history = useHistory()
+  let dispatch = useDispatch()
    let products = useSelector((state : States ) => state.products)
    let response = useCall<Array<DataProduct>>('https://fakestoreapi.com/products')
    let vacio = useSelector((state: States) => state.vacio)
@@ -46,6 +48,9 @@ function Home() {
   const cart = useSelector((state : Cart ) => state.cart)
    
     useEffect(() => {
+      if(!token){
+        return history.push('/login')
+      }
     if(response.data !== null && products.length === 0){
       dispatch(getProducts(response.data))
       }
@@ -54,7 +59,7 @@ function Home() {
 
    const [challengesData, setChallengesData ] = useState('none')
    
-  
+
 
   return (
     <div className=' min-vh-100'>
@@ -83,7 +88,7 @@ function Home() {
         {
           products.length > 0 && products.map((e)  => {
             return(
-              <Card key={e.id} product={e} />
+              <Card key={e.id} product={e}  />
             )
           })
         }

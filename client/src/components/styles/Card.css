@@ -3,23 +3,29 @@
     grid-template-columns: 1fr 1fr 1fr;
     
 }
-.cards-cart{
+/* .cards-cart{
     margin-right: 300px;
+    
+} */
+
+.toaster{
+    z-index: 1000;
 }
 
 .card-img{
-    width: max-content;
     height: 400px;
     object-fit: contain;
+    margin-left: 10px;
+    margin: auto;
 }
 
 .card-cont{
-    border: 2px solid black;
+    border: 2px solid rgb(41, 173, 71);
     border-radius: 4px;
     display: block;
     margin: auto;
 }
 
-.price{
-    margin-left: 10px;
+.all-cards{
+    z-index: 1;
 }

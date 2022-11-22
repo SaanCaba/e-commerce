@@ -18,30 +18,6 @@ function FlyCart() {
     })
 
 
-    // const handleRemoveItem = ( id : number ) : any =>  {
-    //         setClick({
-    //             type:true,
-    //             id: id
-    //         })
-    //       console.log('hola')
-          
-       
-    //     }
-        
-    // useEffect(() => {
-    //     if(click.type === true){
-    //         setClick({
-    //             type:false,
-    //             id:0
-    //         })
-    //         dispatch(deleteCart(click.id))
-    //     }
-    //     if(click.type === false){
-    //         return;
-    //     }
-        
-    // }, [click.type])
-
 
     const handleRemoveItem = (id : number) : void => {
         dispatch(deleteCart(id))
@@ -49,13 +25,7 @@ function FlyCart() {
           dispatch(cantSeeCart())
         }
       }
-    //   useEffect(() => {
-    // //   return () => {
-    // //     if(cart.length === 0){
-    // //         dispatch(cantSeeCart())
-    // //       }
-    // //   } 
-    // //   })
+   
 
     return (
     <div className='cont-main-cart'>
@@ -69,11 +39,12 @@ function FlyCart() {
                     return(
                         <div key={i} className='m-1' >
                             <div className='d-flex flex-column'>
-                            <span className='text-light'>{e.title}</span>
-                           <span className='text-success font-weight'>${e.price}</span>
+                            <span className='text-light text-center'>{e.title}</span>
+                           <span className='font-weight text-center price'>${e.price}</span>
                             </div>
-                           
+                            <div className='d-flex justify-content-center'>
                             <img className='m-2' src={e.image} />
+                            </div>
                             <br/>
                             <button className='text-light bg-danger border-0 h5 w-100' onClick={() => handleRemoveItem(e.id)} >X</button>
                             

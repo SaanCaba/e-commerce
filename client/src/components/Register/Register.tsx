@@ -43,15 +43,7 @@ export const Register = () => {
 			<div className="cont-register vh-100 " >
 				<div className="cont-bk d-flex justify-content-center align-items-center" >
                     <div className="d-flex flex-column">
-					<div className="d-flex justify-content-center">
 
-                    <Link to="/login">
-						<button className="border-0 btn-signin mb-3" type="button" >
-							Sign in
-						</button>
-                        
-					</Link>
-                    </div>
 
 				
 				<div>
@@ -65,7 +57,7 @@ export const Register = () => {
 							onChange={handleChange}
 							value={data.firstName}
 							required
-                            className="inp-register"
+                            className="inp-register bg-transparent"
 						/>
 						<input
 							type="text"
@@ -74,7 +66,7 @@ export const Register = () => {
 							onChange={handleChange}
 							value={data.lastName}
 							required
-                            className="inp-register"
+                            className="inp-register bg-transparent"
 						/>
 						<input
 							type="email"
@@ -83,7 +75,7 @@ export const Register = () => {
 							onChange={handleChange}
 							value={data.email}
 							required
-                            className="inp-register"
+                            className="inp-register bg-transparent"
 						/>
 						<input
 							type="password"
@@ -92,7 +84,7 @@ export const Register = () => {
 							onChange={handleChange}
 							value={data.password}
 							required
-                            className="inp-register"
+                            className="inp-register bg-transparent"
 						/>
 						{error && <div >{error}</div>}
 						<button type="submit" className="btn-reg" >
@@ -101,6 +93,15 @@ export const Register = () => {
                         </div>
 					</form>
 				</div>
+				<div className="d-flex justify-content-center">
+
+<Link to="/login">
+	<button className="border-0 btn-signin-reg bg-transparent mb-3" type="button" >
+		Sign in
+	</button>
+	
+</Link>
+</div>
 			</div>
             </div>
             </div>

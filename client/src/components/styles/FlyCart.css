@@ -1,9 +1,9 @@
 .cont-fly-cart{
     height:90%;
     width: 270px;
-    background-color: rgb(181, 70, 70);
-    border: none;
-    border-radius: 12px;
+    border: 1px solid rgb(3, 52, 3);
+    background-color: rgb(29, 155, 63);
+    border-radius: 3px;
     right: 1%;
     display: flex;
     position: fixed;
@@ -18,14 +18,18 @@
 
 
 .cont-fly-cart::-webkit-scrollbar {
-    width: 7px;
+    width: 5px;
 }
 
 .cont-fly-cart::-webkit-scrollbar-thumb {
-    background: rgb(34, 88, 34);
+    background: rgb(229, 239, 30);
     border-radius: 12px;
 }
 
+.cont-fly-cart .price {
+    color: rgb(144, 230, 144);
+}
+
 .cont-fly-cart img {
-    width: 30px;
+    width: 55px;
 }

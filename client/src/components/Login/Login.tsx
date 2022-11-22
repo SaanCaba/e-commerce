@@ -4,6 +4,9 @@ import { Link, useHistory } from "react-router-dom";
 
 import React from 'react'
 import { Error } from "../../interface/interface";
+import linkedinLogo from './images/linkedin.png'
+import gitHubLogo from './images/github.png'
+import portfolio from './images/portfoliopic.jpg'
 import '../styles/Login.css'
 
 
@@ -57,7 +60,7 @@ function Login() {
 							onChange={handleChange}
 							value={data.email}
 							required
-                            className="m-1"
+                            className="m-1 inp-login"
 						/>
 						<input
 							type="password"
@@ -66,7 +69,7 @@ function Login() {
 							onChange={handleChange}
 							value={data.password}
 							required
-                            className="m-1"
+                            className="m-1 inp-login"
 						/>
 						{error && <div>{error}</div>}
                         <div className="d-flex justify-content-center mt-3">
@@ -95,6 +98,32 @@ function Login() {
         </div>
 
         <div className="col cont-2-login">
+            <div className="reg-cont-aboutme">
+               <div className="d-flex justify-content-center align-items-center h-100 w-100 cont-ani">
+                <div>
+                    <div className="d-flex justify-content-center">
+                    <span className="text-light h2" >By: Santiago Caballero</span>
+                    </div>
+                    <div className="d-flex justify-content-around mt-3">
+                        <a href="https://www.linkedin.com/in/santiago-caballero-82aa241a1/" target='_blank'>
+                        <img style={{width:'50px'}} src={linkedinLogo} />
+                        </a>
+                        <a href="https://github.com/SaanCaba" target='_blank'>
+                        <img style={{width:'50px'}} src={gitHubLogo} />
+                        </a>
+                    </div>
+                    <div className="mt-4 d-flex flex-column">
+                <span className="h2 text-light text-center">Portfolio</span>
+                <a href="https://new-portfolio-chi-one.vercel.app/" target='_blank'>
+                    <img className="img-portfolio" style={{width:'580px', height:'320px'}} src={portfolio} />
+                </a>
+                </div>
+                </div>
+                
+               </div>
+               
+            </div>
+            
         </div>
 
     </div>
