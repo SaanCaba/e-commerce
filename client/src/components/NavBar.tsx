@@ -1,6 +1,7 @@
 import React from 'react'
 
 import {AiOutlineShoppingCart} from 'react-icons/ai'
+import {BiLogOut, BiLogIn} from 'react-icons/bi'
 import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import './styles/NavBar.css'
@@ -24,7 +25,7 @@ const handleLogin = () => {
 }
 
   return (
-    <div className='bg-success p-2 nav-cont'>
+    <div className='bg-transparent p-2 nav-cont'>
         <div className='row '>
             <div className='col mt-1' >
                 <span className='nav-title text-light h6'>E-COMMERCE <AiOutlineShoppingCart size={25} color='white' /></span>
@@ -36,16 +37,11 @@ const handleLogin = () => {
             </div>
             <div className='col d-flex justify-content-center mt-1'>
                 {
-               token ?  <span className='text-light h6 log' onClick={handleLogout}>Logout</span>
-                : <span className='text-light h6 log' onClick={handleLogin}>Log in</span>
+               token ?  <span className='text-light h6 log' onClick={handleLogout}>Logout <BiLogOut size={25} /></span>
+                : ''
                 }
                 
-                {/* <AiOutlineShoppingCart size={25} color='white' /> */}
-                {/* <div>
-                    <span className='bg-danger p-1  rounded-2'>
-                        {cart.length}
-                    </span>
-                </div> */}
+               
             </div>
         </div>
         

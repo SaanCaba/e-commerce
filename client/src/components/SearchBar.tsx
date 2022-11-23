@@ -18,7 +18,7 @@ function SearchBar() {
 
   return (
     <div className='cont-search'>
-       <input type='text' className='border-0 border-bottom border-success ' onChange={handleSearch} placeholder='Buscá tu producto ideal...' /> <FaSearch /> 
+       <input type='text' className='bg-transparent border-0 border-bottom border-success ' onChange={handleSearch} placeholder='Buscá tu producto ideal...' /> <FaSearch /> 
     </div>
   )
 }

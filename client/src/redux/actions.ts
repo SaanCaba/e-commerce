@@ -78,3 +78,25 @@ export function cantSeeCart(){
         type: "DONT_SEE_CART"
     }
 }
+
+export function addTotal(payload: number ){
+    console.log(payload)
+    return{
+        type: "ADD_TOTAL",
+        payload: payload
+    }
+
+}
+
+export function lessTotal(payload:number){
+    return{
+        type: "LESS_TOTAL",
+        payload: payload
+    }
+}
+
+export function valorTotal(){
+    return{
+        type: "VAL_TOT",
+    }
+}

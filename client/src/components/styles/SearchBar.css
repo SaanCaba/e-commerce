@@ -3,5 +3,9 @@ div input:focus{
 }
 
 .cont-search{
-    margin-top: 43px;
+    margin-top: 73px;
+}
+
+.cont-search input::placeholder{
+    color: white;
 }

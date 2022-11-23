@@ -1,9 +1,9 @@
 .cont-fly-cart{
     height:90%;
     width: 270px;
-    border: 1px solid rgb(3, 52, 3);
-    background-color: rgb(29, 155, 63);
-    border-radius: 3px;
+    border-top: 2px solid rgb(30, 31, 30);
+    border-bottom: 2px solid rgb(30, 31, 30);
+    border-radius: 8px;
     right: 1%;
     display: flex;
     position: fixed;
@@ -13,6 +13,37 @@
     word-wrap: break-word;
     /* margin-right: 6px; */
     bottom: 2.8%;
+    backdrop-filter: brightness(60%);
+    animation: render-fly-cart 3s ease-in-out;
+}
+
+
+
+@keyframes render-fly-cart{
+    0%{
+    width: 0px;
+    word-wrap: normal;
+    text-transform: none;
+    opacity: 0;  
+    }
+    100%{
+    width: 270px;
+    opacity: 1;
+    backdrop-filter: brightness(60%);
+    }
+}
+
+
+@keyframes render-cart{
+    0%{
+        background-color:rgb(14, 57, 23) ;
+    }
+    50%{
+        background-color: rgb(40, 174, 78);
+    }
+    100%{
+        background-color: rgb(14, 57, 23);
+    }
 }
 
 
@@ -26,10 +57,53 @@
     border-radius: 12px;
 }
 
+
 .cont-fly-cart .price {
     color: rgb(144, 230, 144);
 }
 
+.cont-fly-cart-item{
+    height: 300px;
+}
+
+
 .cont-fly-cart img {
     width: 55px;
+    object-fit: contain;
+}
+
+.cont-total-cart{
+    background-color: rgb(26, 22, 22);
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    color: rgb(35, 250, 35);
+    font-weight: bold;
+    font-family: 'Ubuntu', sans-serif;
+    width: max-content;
+    display: block;
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+
+.cont-amount{
+    background-color: white;
+    width: max-content;
+    padding: 3px;
+    border-radius: 12px;
+    display: block;
+    margin: auto;
+}
+
+.btn-left{
+    border: none;
+    border-right: 1px solid rgb(210, 122, 27);
+    margin-right: 5px;
+}
+
+.btn-right{
+    border: none;
+    border-left: 1px solid rgb(210, 122, 27);
+    margin-left: 5px;
 }

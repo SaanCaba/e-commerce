@@ -15,7 +15,7 @@ import FlyCart from './FlyCart'
 const notify =  () => toast('Agregado al carrito');
 
 
-function Card({product}: DataProductType ) {
+function Card({product}: DataProductType) {
   const dispatch = useDispatch()
   const token = localStorage.getItem('token')
   const cart = useSelector((state : Cart ) => state.cart)
@@ -52,7 +52,6 @@ function Card({product}: DataProductType ) {
         <div>
         <img src={product.image}  className="card-img-top card-img" alt="..." />
         </div>
-      <div className="card-body">
       <div className='d-flex   justify-content-center '>
           <div className='d-flex flex-column'>
         <span className='h6 mt-2'>{product.title}</span>
@@ -66,7 +65,6 @@ function Card({product}: DataProductType ) {
         </div>
         
         </div>
-    </div>
     <Toaster  />
 
 </div>

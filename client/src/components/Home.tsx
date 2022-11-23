@@ -9,7 +9,7 @@ import Filter from './Filter'
 import FlyCart from './FlyCart'
 import SearchBar from './SearchBar'
 import useCall from './useCall'
-
+import './styles/Home.css'
 
 type DataProduct = {
     id: number
@@ -62,8 +62,8 @@ function Home() {
 
 
   return (
-    <div className=' min-vh-100'>
-      <div className='d-flex justify-content-center mt-3'>
+    <div className='cont-main-home min-vh-100'>
+      <div className='d-flex justify-content-center'>
       <SearchBar />
       </div>
       <div className=''>

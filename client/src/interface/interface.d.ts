@@ -38,6 +38,18 @@ export type Cart = {
    cart : CartProduct[]
  }
 
+export type Total = {
+    total: number
+} 
+
+export type ValTot = {
+    lessTot: boolean
+}
+
+// export type DispatchTot = {
+//     disp : () => Function
+// }
+
 export interface Error{
     response : {
         status: number
