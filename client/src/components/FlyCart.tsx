@@ -3,9 +3,9 @@ import { useSelector } from 'react-redux'
 import { Cart, SeeCart, Total, ValTot } from '../interface/interface'
 import {AiOutlineShoppingCart} from 'react-icons/ai'
 import './styles/FlyCart.css'
-import FlyCartItem from './FlyCartItem'
+import {FlyCartItem} from './FlyCartItem'
 import { useDispatch } from 'react-redux'
-import { addTotal, lessTotal, valorTotal } from '../redux/actions'
+import { addTotal, cancel, lessTotal, resetCart, valorTotal } from '../redux/actions'
 
 
 
@@ -17,12 +17,14 @@ function FlyCart() {
     // const [total, setTotal] = useState(0)
     const valTotal = useSelector((state: ValTot) => state.lessTot)
 
+
     useEffect(() => {
         // let totalPrice = cart.reduce((a,v) => a + v.price ,0)
+        
         if(valTotal === true){
-            
-            return 
+            return;
         };
+        
         if(cart.length !== 0){
             let lastProduct = cart[cart.length - 1]
             dispatch(addTotal(Math.round(lastProduct.price)))
@@ -31,7 +33,9 @@ function FlyCart() {
 
     },[cart])
 
-
+    const handleCancel = () => {
+        dispatch(cancel())
+    }
 
 
     return (
@@ -40,7 +44,9 @@ function FlyCart() {
         flyCart === true ? (
             <div className='cont-fly-cart'>
 
-  
+                <div className='d-flex justify-content-start'>
+                    <button className=' border-0 m-1 rounded bg-danger text-light' onClick={() => handleCancel()}>X</button>
+                </div>
 
                 <div className='m-1 d-flex justify-content-center'>
                 <AiOutlineShoppingCart color='white' size={28} />
@@ -49,7 +55,7 @@ function FlyCart() {
                 {cart.map((e, i) => {
                     return(
                         <div key={i} className='m-1 cont-fly-cart-item' >
-                                <FlyCartItem product = {e} />
+                                <FlyCartItem product={e} />
                         </div>
                     )
                 })}

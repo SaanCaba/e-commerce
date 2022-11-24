@@ -80,7 +80,7 @@ export function cantSeeCart(){
 }
 
 export function addTotal(payload: number ){
-    console.log(payload)
+    
     return{
         type: "ADD_TOTAL",
         payload: payload
@@ -98,5 +98,18 @@ export function lessTotal(payload:number){
 export function valorTotal(){
     return{
         type: "VAL_TOT",
+    }
+}
+
+export function resetCart(payload:number){
+    return{
+        type: "RESET_CART",
+        payload: payload
+    }
+}
+
+export function cancel(){
+    return{
+        type: "CANCEL"
     }
 }

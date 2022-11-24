@@ -150,6 +150,7 @@ function rootReducer(state = initial_state, action: Action) {
             case "LESS_TOTAL":  
              let resta = state.total
              resta -= action.payload
+            
              return{
                 ...state,
                 total: resta,
@@ -157,11 +158,22 @@ function rootReducer(state = initial_state, action: Action) {
              } 
             
              case "VAL_TOT":
+
             return{
                 ...state,
                 lessTot: true
             }
-                
+            case "RESET_CART":
+
+                return{
+                    ...state,
+                    total: action.payload
+                }
+            case "CANCEL":
+                return{
+                    ...state,
+                    cart: []
+                }
            default: 
             return state
         }

@@ -12,6 +12,7 @@ export type DataProductType = {
      rating: {}
      title: string
  }
+ 
  }
 
  type DataProduct = {
@@ -32,10 +33,12 @@ export type CartProduct = {
      price: number
      rating: {}
      title: string
+     amount? : number
  }
  
 export type Cart = {
    cart : CartProduct[]
+   
  }
 
 export type Total = {

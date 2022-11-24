@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import './styles/Card.css'
 import { ImPriceTags } from 'react-icons/im'
 import { useDispatch } from 'react-redux'
-import { addCart, cantSeeCart, deleteCart, seeCart } from '../redux/actions'
+import { addCart, cantSeeCart, deleteCart, resetCart, seeCart } from '../redux/actions'
 import { useSelector } from 'react-redux'
 import toast, { Toaster } from 'react-hot-toast';
 import { Cart, DataProduct, DataProductType } from '../interface/interface'
@@ -28,7 +28,9 @@ function Card({product}: DataProductType) {
     if(findProduct){
       return toast.error('No podemos agregar el mismo producto al carrito')
     }
-    console.log(product)
+    if(cart.length === 0){
+      dispatch(resetCart(0))
+    }
     dispatch(addCart(product))
     dispatch(seeCart())
     toast.success('Producto agregado correctamente a tu carrito!')

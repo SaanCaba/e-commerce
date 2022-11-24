@@ -12,9 +12,10 @@
     overflow-y: scroll;
     word-wrap: break-word;
     /* margin-right: 6px; */
+  transition: all 500ms ease-out;
     bottom: 2.8%;
     backdrop-filter: brightness(60%);
-    animation: render-fly-cart 3s ease-in-out;
+    animation: render-fly-cart 1s ease-in-out;
 }
 
 
@@ -106,4 +107,17 @@
     border: none;
     border-left: 1px solid rgb(210, 122, 27);
     margin-left: 5px;
+}
+
+.cont-flycart-item{
+    animation: render-item-cart 4s ease-in-out;
+}
+
+@keyframes render-item-cart{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
 }

@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { Cart } from '../interface/interface'
-import { getProducts, update } from '../redux/actions'
+import { getProducts, resetCart, update } from '../redux/actions'
 import Card from './Card'
 import Filter from './Filter'
 import FlyCart from './FlyCart'
@@ -48,9 +48,13 @@ function Home() {
   const cart = useSelector((state : Cart ) => state.cart)
    
     useEffect(() => {
+
       if(!token){
         return history.push('/login')
       }
+    if(cart.length === 0){
+      dispatch(resetCart(0))
+    }  
     if(response.data !== null && products.length === 0){
       dispatch(getProducts(response.data))
       }
@@ -59,7 +63,6 @@ function Home() {
 
    const [challengesData, setChallengesData ] = useState('none')
    
-
 
   return (
     <div className='cont-main-home min-vh-100'>
