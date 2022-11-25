@@ -8,6 +8,8 @@ import linkedinLogo from './images/linkedin.png'
 import gitHubLogo from './images/github.png'
 import portfolio from './images/portfoliopic.jpg'
 import '../styles/Login.css'
+import { addUser } from "../../redux/actions";
+import { useDispatch } from "react-redux";
 
 
 
@@ -16,6 +18,7 @@ function Login() {
 		email: "",
 		password: "",
 	});
+    const dispatch = useDispatch()
 	const [error, setError] = useState("");
     const handleChange = (e: React.FormEvent<HTMLInputElement> ) => {
 		setData({ ...data, [e.currentTarget.name]: e.currentTarget.value });
@@ -42,6 +45,17 @@ function Login() {
 		}
 	};
 
+    const googleAuth = async () => {
+		window.open(
+			`http://localhost:8080/auth/google/callback`,
+			"_self"
+		);
+        const url = `http://localhost:8080/auth/login/success`;
+        const { data } = await axios.get(url, { withCredentials: true });
+      dispatch(addUser(data))
+      console.log(data.token)
+      localStorage.setItem('token', data.token)
+	};
 
   return (
     <div className="vh-100  row">
@@ -90,8 +104,15 @@ function Login() {
 						</button>
 					</Link>
                 </div>
-                    
+                <div className="d-flex justify-content-center">
+                <button onClick={googleAuth}>
+						<img src="" alt="google icon" />
+						<span>Sing in with Google</span>
+					</button>
+                </div>
+
 				</div>
+                
                 </div>
             </div>
 

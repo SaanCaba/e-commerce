@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const router = require('express').Router();
-const { User } = require("../models/user");
+const User = require("../models/user");
 const Joi = require("joi");
 const bcrypt = require('bcrypt');
 router.post("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -22,6 +22,7 @@ router.post("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         }
         //validamos mail
         const user = yield User.findOne({ email: req.body.email });
+        console.log(user);
         if (!user) {
             return res.status(401).send({ message: "Invalid email or password" });
         }

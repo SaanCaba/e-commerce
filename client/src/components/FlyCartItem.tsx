@@ -21,43 +21,18 @@ export const FlyCartItem: React.FC<PropsItem>   = ( {product}: PropsItem ) : JSX
   
   
   
-    const cart = useSelector((state: Cart ) => state.cart)
     // sacar este any
-    const dispatchRet = useDispatch<any>()
     const dispatch = useDispatch()
-    const retDispatch = useDispatch<any>()
-    const total = useSelector((state: Total) => state.total)
-    const [amount, setAmount] = useState({
-        amount: 1
-    })
+    // const [amount, setAmount] = useState(1)
 
     const [totalItem, setTotalItem] = useState(product.price)
 
-    const handleRemoveItem = (id : number) : void => {
-        dispatch(deleteCart(id))
-        
-        if(cart.length === 0) {
-          dispatch(cantSeeCart())
-          return dispatchRet(lessTotal(Math.round(total)))
-        }
-        if(amount.amount > 1){
-          dispatch(valorTotal())
-          return retDispatch(lessTotal(Math.round(totalItem)))
-        }
-        
-        dispatch(valorTotal())
-        dispatch(lessTotal(Math.round(product.price)))
-      }
-    useEffect(() => {
-      // console.log('hola')
 
-    })
       const handleMore = () => {
-        if(amount.amount === 3) return;
-        setAmount({
-            ...amount,
-            amount: amount.amount + 1
-        })
+        // if(amount === 3) return;
+        // setAmount((amt) => amt + 1)
+        if(product.qty === 3) return;
+       product.qty !== undefined ? product.qty += 1 : product.qty = 1
         
         dispatch(addTotal(Math.round(product.price)))
         setTotalItem((state) => state + product.price)
@@ -66,15 +41,26 @@ export const FlyCartItem: React.FC<PropsItem>   = ( {product}: PropsItem ) : JSX
     
 
     const handleLess = () => {
-        if(amount.amount === 1) return;
-        setAmount({
-            ...amount,
-            amount: amount.amount - 1
-        })
+        // if(amount < 1){
+        //  return dispatch(deleteCart(product.id))
+        // }
+        // setAmount((amt) => amt - 1)
+        if(product.qty === 1) return;
+        
+       product.qty !== undefined ? product.qty -= 1 : product.qty = 1
         dispatch(lessTotal(Math.round(product.price)))
         setTotalItem((state) => state - product.price)
 
     }
+
+    const handleClickRemove = () => {
+      dispatch(deleteCart(product.id))
+      if(product.qty !== undefined){
+        dispatch(lessTotal(Math.round(product.price * product.qty)))
+      }
+    }
+
+    console.log(product)
     
     return (
     <div className='cont-flycart-item'>
@@ -92,15 +78,13 @@ export const FlyCartItem: React.FC<PropsItem>   = ( {product}: PropsItem ) : JSX
       <br />
       <div className='d-flex justify-content-center mb-2 cont-amount'>
       <button className='bg-transparent btn-left' onClick={handleLess}>-</button>
-      <span >{amount.amount}</span>
+      <span >{product.qty}</span>
       <button className='bg-transparent btn-right' onClick={handleMore}>+</button>
+      
       </div>
-      {/* <button
-        className="text-light bg-danger border-0 h5 w-100"
-        onClick={() => handleRemoveItem(product.id)}
-      >
-        X
-      </button> */}
+      <div className='d-flex justify-content-center'>
+        <button className='bg-danger btn me-2 text-light' onClick={() => handleClickRemove() } >DELETE ITEM</button>
+      </div>
       
     </div>
   );

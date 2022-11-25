@@ -36,7 +36,11 @@ type States = {
 
 
 
-function Home() {
+function Home({userDetails}:any) {
+
+  const user = userDetails;
+  // console.log(user)
+
 
   let token = localStorage.getItem('token')
   let history = useHistory()
@@ -48,8 +52,8 @@ function Home() {
   const cart = useSelector((state : Cart ) => state.cart)
    
     useEffect(() => {
-
-      if(!token){
+      console.log(token)
+      if(!token ){
         return history.push('/login')
       }
     if(cart.length === 0){

@@ -1,7 +1,7 @@
 import { DataValidate } from "../models/user"
 import {Request, Response } from "express"
 const router = require('express').Router()
-const {User} = require("../models/user")
+const User = require("../models/user")
 const Joi = require("joi")
 const bcrypt = require('bcrypt')
 
@@ -15,6 +15,7 @@ router.post("/", async (req: Request , res: Response) => {
         }
         //validamos mail
         const user = await User.findOne({email: req.body.email})
+        console.log(user)
         if(!user){
             return res.status(401).send({message: "Invalid email or password"})
 

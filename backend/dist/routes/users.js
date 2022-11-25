@@ -10,7 +10,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const router = require("express").Router();
-const { User, validate } = require('../models/user');
+const User = require('../models/user');
+const validate = require('../models/utils');
 const bcrypt = require('bcrypt');
 //REGISTER ROUTE
 router.post("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {

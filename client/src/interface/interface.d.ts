@@ -23,10 +23,11 @@ export type DataProductType = {
     price: number
     rating: {}
     title: string
+    qty?:number
 }
  
 export type CartProduct = {
-   id: number
+     id: number
      description: string
      category: string
      image: string

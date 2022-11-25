@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 const router = require("express").Router();
-const {User, validate} = require('../models/user')
+const User = require('../models/user')
+const validate = require('../models/utils')
 const bcrypt = require('bcrypt')
 
 //REGISTER ROUTE

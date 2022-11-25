@@ -6,8 +6,7 @@ import './styles/FlyCart.css'
 import {FlyCartItem} from './FlyCartItem'
 import { useDispatch } from 'react-redux'
 import { addTotal, cancel, lessTotal, resetCart, valorTotal } from '../redux/actions'
-
-
+import swal from 'sweetalert'
 
 function FlyCart() {
     const flyCart = useSelector((state:SeeCart) => state.seeCart)
@@ -24,8 +23,8 @@ function FlyCart() {
         if(valTotal === true){
             return;
         };
-        
-        if(cart.length !== 0){
+        if(cart.length > 0){
+            // al ultimo item añadido le sumamos su precio al total.
             let lastProduct = cart[cart.length - 1]
             dispatch(addTotal(Math.round(lastProduct.price)))
         }
@@ -34,9 +33,20 @@ function FlyCart() {
     },[cart])
 
     const handleCancel = () => {
-        dispatch(cancel())
+        swal({
+            title: "¿Estás seguro?",
+            text: "¿Quieres eliminar todo lo del carrito?",
+            icon: "warning",
+            dangerMode: true,
+          })
+          .then(willDelete => {
+            if (willDelete) {
+              swal("Eliminado!", "¡Ahora puedes seguir con tu compra!", "success");
+              dispatch(cancel())
+            }
+          });
     }
-
+    console.log(cart)
 
     return (
     <div className='cont-main-cart'>

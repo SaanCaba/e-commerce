@@ -27,6 +27,7 @@ type States = {
     seeCart: boolean
     total: number 
     lessTot:boolean
+    user?:{}
 }
 
 const initial_state : States = {
@@ -38,7 +39,8 @@ const initial_state : States = {
     onFilter:false,
     seeCart: false,
     total: 0,
-    lessTot: false
+    lessTot: false,
+    user:{}
 }
 
 
@@ -118,6 +120,8 @@ function rootReducer(state = initial_state, action: Action) {
                     update: false
                 }
             case "ADD_CART":
+                console.log(action.payload)
+                action.payload.qty = 1;
             return{
                 ...state,
                 cart: [...state.cart, action.payload],
@@ -173,6 +177,11 @@ function rootReducer(state = initial_state, action: Action) {
                 return{
                     ...state,
                     cart: []
+                }
+            case "GET_USER":
+                return{
+                    ...state,
+                    user: action.payload
                 }
            default: 
             return state

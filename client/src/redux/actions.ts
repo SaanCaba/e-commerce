@@ -113,3 +113,10 @@ export function cancel(){
         type: "CANCEL"
     }
 }
+
+export function addUser (user:any){
+    return{
+        type:"GET_USER",
+        payload: user
+    }
+}

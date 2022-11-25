@@ -3,7 +3,8 @@ import axios from "axios";
 import { Link, useHistory } from "react-router-dom";
 import { Error } from "../../interface/interface";
 import '../styles/Register.css'
-
+import { addUser } from "../../redux/actions";
+import { useDispatch } from "react-redux";
 export const Register = () => {
 	const [data, setData] = useState({
 		firstName: "",
@@ -13,7 +14,7 @@ export const Register = () => {
 	});
 	const [error, setError] = useState("");
 	const history = useHistory()
-    
+    const dispatch = useDispatch()
 
 	const handleChange = (e : React.FormEvent<HTMLInputElement>) => {
 		setData({ ...data, [e.currentTarget.name]: e.currentTarget.value });
@@ -36,6 +37,18 @@ export const Register = () => {
 				setError(typedError.response.data.message);
 			}
 		}
+	};
+
+	const googleAuth = async() => {
+		window.open(
+			`http://localhost:8080/auth/google/callback`,
+			"_self"
+		);
+		const url = `http://localhost:8080/auth/login/success`;
+        const { data } = await axios.get(url, { withCredentials: true });
+      	dispatch(addUser(data))
+      	console.log(data.token)
+        localStorage.setItem('token', data.token)
 	};
 
 	return (
@@ -101,6 +114,10 @@ export const Register = () => {
 	</button>
 	
 </Link>
+<button onClick={googleAuth}>
+						<img src="" alt="google icon" />
+						<span>Sing up with Google</span>
+					</button>
 </div>
 			</div>
             </div>

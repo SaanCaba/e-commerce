@@ -17,6 +17,7 @@ const history = useHistory()
 
 const handleLogout = () => {
     localStorage.removeItem("token");
+    window.open(`http://localhost:8080/auth/logout`, "_self");
     window.location.reload();
 };
 
