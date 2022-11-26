@@ -104,6 +104,14 @@ function rootReducer(state = initial_state, action: Action) {
                     onFilter: true
                 }
             }
+            if(action.payload === 'all'){
+                return{
+                    ...state,
+                    products: state.allProducts,
+                    update:true,
+                    onFilter: true
+                }
+            }
             filterProductsByCategory  =  state.allProducts.filter((e : DataProduct )=>{
                     return e.category === action.payload
                 })

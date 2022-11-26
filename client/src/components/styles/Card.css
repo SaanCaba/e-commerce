@@ -20,24 +20,15 @@
 }
 
 .card-cont{
-    border: 2px solid rgb(30, 31, 30);
-    border-radius: 4px;
+    padding: 12px;
+    border-radius: 14px 14px 14px 0px;
     display: block;
     margin: auto;
     background-color: rgb(244, 243, 243);
-    animation: render-card 3s ease-in-out;
 }
 
 
 
-@keyframes render-card{
-    0%{
-        opacity: 0;
-    }
-    100%{
-        opacity: 1;
-    }
-}
 
 .all-cards{
     z-index: 1;

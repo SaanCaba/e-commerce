@@ -9,33 +9,32 @@ import { Register } from './components/Register/Register';
 import { useDispatch } from 'react-redux';
 import { addUser } from './redux/actions'
 import { useSelector } from 'react-redux';
+import { UserInfo } from './interface/interface';
 
 
 function App() {
   const [user, setUser] = useState(null)
   const dispatch = useDispatch()
-  const userRedux = useSelector((state:any) => state.user)
+  const userRedux = useSelector((state: UserInfo) => state.user)
   
 
-  // const getUser = async () => {
-	// 	try {
-	// 		const url = `http://localhost:8080/auth/login/success`;
-	// 		const { data } = await axios.get(url, { withCredentials: true });
-	// 		setUser(data.user._json);
-  //     dispatch(addUser(data))
-  //     console.log(data.token)
-  //     localStorage.setItem('token', data.token)
-	// 	} catch (err) {
-	// 		console.log(err);
-	// 	}
-	// };
+  const getUser = async () => {
+		try {
+			const url = `http://localhost:8080/auth/login/success`;
+			const { data } = await axios.get(url, { withCredentials: true });
+			setUser(data.user._json);
+      dispatch(addUser(data.user._json))
+		} catch (err) {
+			console.log(err);
+		}
+	};
   
-	// useEffect(() => {
-  //   if(user === null){
-  //     getUser()
-  //   }
+	useEffect(() => {
+    if(user === null){
+      getUser()
+    }
     
-	// }, []);
+	}, []);
   
 
   return (

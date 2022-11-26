@@ -37,16 +37,6 @@ function Card({product}: DataProductType) {
     
   }
 
-  const handleRemoveItem = (id : number) : void => {
-    dispatch(deleteCart(id))
-    if(cart.length === 0) {
-      dispatch(cantSeeCart())
-    }
-  }
-
-
-
-  
 
   return (
     <div className='card-cont m-3'>

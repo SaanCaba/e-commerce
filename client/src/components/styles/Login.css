@@ -54,20 +54,33 @@
 
 
 .btn-signin{
-    border-radius: 12px;
+    border-radius: 7px 7px 7px 7px;
     padding: 9px;
     font-weight: bold;
-    background-color: rgb(55, 164, 55);
-    color: rgb(34, 33, 33);
+    background-color: rgb(10, 177, 71);
+    color: rgb(235, 235, 235);
+    transition: 200ms ease-in-out;
+}
+
+.btn-signin:hover{
+    background-color: rgb(235, 235, 235);
+    color: rgb(10, 177, 71);
+    
 }
 
 .btn-signup{
-    border-radius: 12px;
+    border-radius: 7px 7px 7px 7px;
     padding: 9px;
     font-weight: bold;
-    margin-top: 9px;
-    background-color: rgb(55, 164, 55);
-    color: rgb(34, 33, 33);
+    background-color: rgb(10, 177, 71);
+    color: rgb(235, 235, 235);
+    transition: 200ms ease-in-out;
+}
+
+.btn-signup:hover{
+    background-color: rgb(235, 235, 235);
+    color: rgb(10, 177, 71);
+    
 }
 
 .cont-1-log{

@@ -34,31 +34,23 @@ function Filter() {
 
   const dispatch = useDispatch()
   
-  const handleFilterCategory = (e: React.FormEvent<HTMLSelectElement>) => {
+  const handleFilterOrd = (e: React.FormEvent<HTMLSelectElement>) => {
     dispatch(filterProducts(e.currentTarget.value))
-    // dispatch(addFilters(e.currentTarget.value))
-    // let findCopy = filters.find(el => el.includes(e.currentTarget.value))
-    // if(e.currentTarget.value === 'Less expensive' || e.currentTarget.value === 'More expensive'){
-    //   return;
-    // }
-    // if(filters.length === 1){
-    //   setFilters(e.currentTarget.value)
-    //   return;
-    // }
-    // if(!findCopy ){
-    //   setFilters([...filters, e.currentTarget.value])
-    // }
-    // return;
-  };
 
-  // const products = useSelector((state : States) => state.products)
+  }
+
+  const handleFilterCategory = (e: React.MouseEvent<HTMLElement>, id:any) => {
+    const text = document.getElementById(id)?.innerText.toLowerCase()
+    if(text !== undefined){
+      dispatch(filterProducts(text))
+    }
+  };
 
 
   return (
     <div className="">
       <div className="d-flex justify-content-center mt-4">
-
-      <select onChange={handleFilterCategory} className="m-2">
+      <select onChange={handleFilterOrd} className="m-2">
         <option>Prices</option>
         <option value="Less expensive" >
           Less expensive
@@ -67,31 +59,16 @@ function Filter() {
           More expensive
         </option>
       </select>
-      <select className="m-2" onChange={handleFilterCategory}>
-        <option>Category</option>
-        <option value={`men's clothing`} >
-          Mens clothing
-        </option>
-        <option value="jewelery" >
-          Jewelery
-        </option>
-        <option value="electronics" >
-          Electronics
-        </option>
-        <option value={`women's clothing`} >
-          Women's clothing
-        </option>
-      </select>
       </div>
-      {/* <div>
-        {filters.length > 0 && filters.map((e, i) => {
-          return(
-            <div key={i} className='d-flex justify-content-center'>
-            <span>{e}</span>
-            </div>
-          )
-        })}
-      </div> */}
+      <div>
+        <div className="d-flex justify-content-center">
+          <button id='1' className="border-0 btn-dark text-light m-1 btn btn-outline-secondary" onClick={(e) => handleFilterCategory(e, '1')}>Men's clothing</button>
+          <button id='2' className="border-0 btn-dark text-light m-1 btn btn-outline-secondary" onClick={(e) => handleFilterCategory(e, '2')}>Jewelery</button>
+          <button id='3' className="border-0 btn-dark text-light m-1 btn btn-outline-secondary" onClick={(e) => handleFilterCategory(e, '3')}>Electronics</button>
+          <button id='4' className="border-0 btn-dark text-light m-1 btn btn-outline-secondary" onClick={(e) => handleFilterCategory(e, '4')}>Women's clothing</button>
+          <button id='5' className="border-0 btn-dark text-light m-1 btn btn-outline-secondary" onClick={(e) => handleFilterCategory(e, '5')}>All</button>
+        </div>
+      </div>
     </div>
   );
 }

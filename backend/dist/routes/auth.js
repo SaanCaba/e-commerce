@@ -33,7 +33,7 @@ router.post("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         }
         // generamos token, y se lo damos al usuario logeado!
         const token = user.generateAuthToken();
-        res.status(200).send({ data: token, message: "Logged in succesfully" });
+        res.status(200).send({ data: { token, user }, message: "Logged in succesfully" });
     }
     catch (error) {
         res.status(500).send({ message: "Internal server error" });

@@ -62,3 +62,13 @@ export interface Error{
         }
     }  | undefined
 }
+
+export type UserInfo = {
+    user: {_id?: string
+    firstName?: string
+    given_name?:string
+    lastName?: string
+    family_name?:string
+    email: string
+    } 
+}

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { Link, useHistory } from "react-router-dom";
-
+import GoogleButton from 'react-google-button'
 import React from 'react'
 import { Error } from "../../interface/interface";
 import linkedinLogo from './images/linkedin.png'
@@ -30,7 +30,9 @@ function Login() {
 			const url = "http://localhost:8080/api/auth";
 			const { data: res } = await axios.post(url, data);
 			// el token del back, para el usuario
-            localStorage.setItem("token", res.data)
+            localStorage.setItem("token", res.data.token)
+            console.log(res.data.user)
+            dispatch(addUser(res.data.user))
             // window.location.href = "/"
             history.push('/')
 		} catch (error) {
@@ -88,28 +90,30 @@ function Login() {
 						{error && <div>{error}</div>}
                         <div className="d-flex justify-content-center mt-3">
 						<button type="submit" className="border-0 btn-signin"  >
-							Sing In
+							Sign In
 						</button>
                         </div>
+                        <div className="mt-3 d-flex justify-content-center">
+                <button className="border-0 p-2 bg-transparent" onClick={googleAuth}>
+						{/* <img style={{width:'30px', marginRight:'20px'}} src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png" alt="google icon" /> */}
+						{/* <span>Sign in with Google</span> */}
+					<GoogleButton label="Iniciar sesión con Google" />
+                    </button>
+                </div>
                     </div>
             </div>
 
             </form>
             <div className="text-light">
                 <h2 className="text-center title-log mt-4 h2">You don't have account?</h2>
-                <div className="d-flex justify-content-center">
+                <div className="d-flex justify-content-center mt-4">
 					<Link to="/signup">
 						<button type="button" className="border-0 btn-signup">  
-							Sing up
+							Sign up
 						</button>
 					</Link>
                 </div>
-                <div className="d-flex justify-content-center">
-                <button onClick={googleAuth}>
-						<img src="" alt="google icon" />
-						<span>Sing in with Google</span>
-					</button>
-                </div>
+
 
 				</div>
                 

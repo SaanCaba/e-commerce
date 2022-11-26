@@ -5,6 +5,8 @@ import { Error } from "../../interface/interface";
 import '../styles/Register.css'
 import { addUser } from "../../redux/actions";
 import { useDispatch } from "react-redux";
+import {IoMdArrowRoundBack} from 'react-icons/io'
+
 export const Register = () => {
 	const [data, setData] = useState({
 		firstName: "",
@@ -39,17 +41,7 @@ export const Register = () => {
 		}
 	};
 
-	const googleAuth = async() => {
-		window.open(
-			`http://localhost:8080/auth/google/callback`,
-			"_self"
-		);
-		const url = `http://localhost:8080/auth/login/success`;
-        const { data } = await axios.get(url, { withCredentials: true });
-      	dispatch(addUser(data))
-      	console.log(data.token)
-        localStorage.setItem('token', data.token)
-	};
+
 
 	return (
 		<div>
@@ -60,6 +52,12 @@ export const Register = () => {
 
 				
 				<div>
+				<div className="d-flex justify-content-start">
+				<Link to="/login" className="text-decoration-none">
+					<IoMdArrowRoundBack color="#3ef068" size={30} />
+					<span className="text-light h5">Volver</span>
+				</Link>
+				</div>
 					<form onSubmit={handleSubmit}>
 						<h1 className="text-center title-reg">Create Account</h1>
 						<div className="d-flex flex-column">
@@ -106,19 +104,7 @@ export const Register = () => {
                         </div>
 					</form>
 				</div>
-				<div className="d-flex justify-content-center">
 
-<Link to="/login">
-	<button className="border-0 btn-signin-reg bg-transparent mb-3" type="button" >
-		Sign in
-	</button>
-	
-</Link>
-<button onClick={googleAuth}>
-						<img src="" alt="google icon" />
-						<span>Sing up with Google</span>
-					</button>
-</div>
 			</div>
             </div>
             </div>

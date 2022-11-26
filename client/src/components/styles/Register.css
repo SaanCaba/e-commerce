@@ -7,7 +7,7 @@
 .cont-bk{
     height: 100vh;
     width: 100%;
-    backdrop-filter: blur(4px) brightness(60%) ;
+    backdrop-filter: blur(1px) brightness(60%) ;
 }
 
 .inp-register{
@@ -28,19 +28,23 @@
 }
 
 .btn-reg{
-    font-weight: bold;
+    border-radius: 7px 7px 7px 7px;
     padding: 9px;
+    font-weight: bold;
+    background-color: rgb(10, 177, 71);
+    color: rgb(235, 235, 235);
+    transition: 200ms ease-in-out;
     border: none;
-    width: 80px;
-    margin: auto;
-    border-radius: 12px;
-    color: rgb(34, 33, 33);
-    background-color: rgb(55, 164, 55);
+}
+
+.btn-reg:hover{
+    background-color:rgb(235, 235, 235); 
+    color: rgb(10, 177, 71);;
 }
 
 .btn-signin-reg{
     text-decoration: underline;
     color: white;
     margin-top: 20px;
-    font-weight: 500
+    
 }
