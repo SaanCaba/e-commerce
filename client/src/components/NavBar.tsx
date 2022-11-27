@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 
 import {FaUser} from 'react-icons/fa'
 import {AiOutlineShoppingCart} from 'react-icons/ai'
@@ -10,8 +10,6 @@ import './styles/NavBar.css'
  
 
 function NavBar() {
-
-//   const cart = useSelector((state : Cart ) => state.cart)
 
 const user = useSelector((state: UserInfo) => state.user)
 const getUserLoc = localStorage.getItem('userLog')
@@ -25,11 +23,6 @@ const handleLogout = () => {
     window.open(`http://localhost:8080/auth/logout`, "_self");
 };
 
-
-// const handleLogin = () => {
-//     return history.push('/login')
-// }
-
   return (
     <div className='bg-transparent p-2 nav-cont'>
         <div className='row '>
@@ -38,18 +31,28 @@ const handleLogout = () => {
             </div>
             <div className='col-md-1 d-flex justify-content-center mt-1'>
                 {/* PRODUCTS */}
-               <span className='text-light h6'>Creator</span> 
+                <a className='text-decoration-none' href='https://new-portfolio-chi-one.vercel.app/' target='_blank'>
+                <span className='text-light h6'>Creador</span> 
+                </a>
 
             </div>
-            <div className='col d-flex justify-content-center mt-1'>
+            <div className='col-md-5 d-flex justify-content-center mt-1'>
                 {
                token ?  <span className='text-light h6 log' onClick={handleLogout}>Logout <BiLogOut size={25} /></span>
                 : ''
                 }
                
             </div>
-            <div className='col-md-1 '>
-              <span className='m-1'><FaUser color='white' /></span> <span className='h6 text-light'>{getUserLoc}</span>  
+            <div className='col-md-1' style={{marginRight:'0px'}} >
+              <div className='' style={{width:'max-content'}}>
+                <div className='d-flex justify-content-center'>
+              <span ><FaUser color='white' /></span> 
+              <div style={{marginLeft:'10px'}} >
+              <span  className='text-nowrap h6 text-light'>{getUserLoc?.replace(/['"]+/g, '')}</span>  
+              </div>
+                </div>
+              </div>
+            
             </div>
             
         </div>

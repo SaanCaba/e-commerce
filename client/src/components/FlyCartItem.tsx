@@ -9,10 +9,6 @@ import './styles/FlyCart.css'
 import { Dispatch } from 'redux';
 
 interface PropsItem {
-  // amount: {
-  //   amount : number
-  // }
-  // setAmount: React.Dispatch<React.SetStateAction<{amount: number}>>
   product: DataProduct
 }
 
@@ -21,16 +17,13 @@ export const FlyCartItem: React.FC<PropsItem>   = ( {product}: PropsItem ) : JSX
   
   
   
-    // sacar este any
     const dispatch = useDispatch()
-    // const [amount, setAmount] = useState(1)
 
     const [totalItem, setTotalItem] = useState(product.price)
 
+    const [lessTitle, setLessTitle] = useState('')
 
       const handleMore = () => {
-        // if(amount === 3) return;
-        // setAmount((amt) => amt + 1)
         if(product.qty === 3) return;
        product.qty !== undefined ? product.qty += 1 : product.qty = 1
         
@@ -41,10 +34,6 @@ export const FlyCartItem: React.FC<PropsItem>   = ( {product}: PropsItem ) : JSX
     
 
     const handleLess = () => {
-        // if(amount < 1){
-        //  return dispatch(deleteCart(product.id))
-        // }
-        // setAmount((amt) => amt - 1)
         if(product.qty === 1) return;
         
        product.qty !== undefined ? product.qty -= 1 : product.qty = 1
@@ -60,14 +49,22 @@ export const FlyCartItem: React.FC<PropsItem>   = ( {product}: PropsItem ) : JSX
       }
     }
 
-    console.log(product)
+    useEffect(()=>{
+      if(product.title.length > 29){
+        setLessTitle(product.title.slice(0,28) + '...')
+      }else{
+        setLessTitle('')
+      }
+    },[])
+
+    
     
     return (
-    <div className='cont-flycart-item'>
+    <div className='cont-flycart-item border-top border-success' style={{height:'240px'}} >
       <div className="d-flex flex-column ">
-        <span className="text-light text-center">{product.title}</span>
+        <span title={product.title} className="text-light text-center">{lessTitle.length > 0 ? lessTitle : product.title}</span>
       </div>
-      <div className="d-flex justify-content-center">
+      <div className="d-flex justify-content-center" style={{height:'80px'}}>
         <img className="m-2" src={product.image} />
       </div>
       <div className='d-flex justify-content-center'>
@@ -77,13 +74,17 @@ export const FlyCartItem: React.FC<PropsItem>   = ( {product}: PropsItem ) : JSX
 
       <br />
       <div className='d-flex justify-content-center mb-2 cont-amount'>
-      <button className='bg-transparent btn-left' onClick={handleLess}>-</button>
+      <button className='bg-transparent btn-left' onClick={handleLess}>
+        <span className='h5'>-</span>
+      </button>
       <span >{product.qty}</span>
-      <button className='bg-transparent btn-right' onClick={handleMore}>+</button>
+      <button className='bg-transparent btn-right' onClick={handleMore}>
+        <span className='h5'>+</span>
+      </button>
       
       </div>
       <div className='d-flex justify-content-center'>
-        <button className='bg-danger btn me-2 text-light' onClick={() => handleClickRemove() } >DELETE ITEM</button>
+        <button className='btn btn-danger me-2 text-light' onClick={() => handleClickRemove() } >DELETE ITEM</button>
       </div>
       
     </div>

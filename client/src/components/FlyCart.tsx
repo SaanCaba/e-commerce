@@ -11,14 +11,12 @@ import swal from 'sweetalert'
 function FlyCart() {
     const flyCart = useSelector((state:SeeCart) => state.seeCart)
     const cart = useSelector((state: Cart ) => state.cart)
-    const dispatch = useDispatch<any>()
+    const dispatch = useDispatch()
     const total = useSelector((state: Total) => state.total)
-    // const [total, setTotal] = useState(0)
     const valTotal = useSelector((state: ValTot) => state.lessTot)
 
 
     useEffect(() => {
-        // let totalPrice = cart.reduce((a,v) => a + v.price ,0)
         
         if(valTotal === true){
             return;
@@ -46,7 +44,6 @@ function FlyCart() {
             }
           });
     }
-    console.log(cart)
 
     return (
     <div className='cont-main-cart'>
@@ -59,7 +56,7 @@ function FlyCart() {
                 </div>
 
                 <div className='m-1 d-flex justify-content-center'>
-                <AiOutlineShoppingCart color='white' size={28} />
+                <AiOutlineShoppingCart color='white' size={28} /><span className='bg-success text-light p-1 h6 rounded-circle'>{cart.length}</span>
                 </div>
                 
                 {cart.map((e, i) => {
@@ -70,7 +67,7 @@ function FlyCart() {
                     )
                 })}
                 <div className='d-flex justify-content-center cont-total-cart'>
-                <span >Total: ${total}</span>
+                <span className='mr-2' >Total: </span><span className='total-price'>${total}</span>
                 </div>
             </div>
         )

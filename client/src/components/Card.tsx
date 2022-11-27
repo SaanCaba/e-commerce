@@ -46,13 +46,15 @@ function Card({product}: DataProductType) {
         </div>
       <div className='d-flex   justify-content-center '>
           <div className='d-flex flex-column'>
-        <span className='h6 mt-2'>{product.title}</span>
-        <span className='text-center mb-3'>{product.category}</span>
+            <div className='' style={{height: '70px'}}>
+            <span className='h6 mt-2 '>{product.title}</span>
+            </div>
+        <span className='text-center mb-3 text-uppercase mt-3'>{product.category}</span>
         <div className='d-flex justify-content-center'>
             <span className='text-success price h4 mt-3' >${product.price}</span>
         </div>
         <div className='d-flex justify-content-center mb-4'>
-          <button className='border-0 border-bottom border-success bg-transparent' onClick={handleClick} >Agregar</button>
+          <button className='border-0 border-bottom border-success bg-transparent btn-hover' onClick={handleClick} >Comprar</button>
         </div> 
         </div>
         

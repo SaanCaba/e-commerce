@@ -12,6 +12,7 @@ import useCall from "./useCall";
 import Skeleton from 'react-loading-skeleton'
 import "./styles/Home.css";
 import "react-loading-skeleton/dist/skeleton.css"
+import Loader from "./Loader";
 
 type DataProduct = {
   id: number;
@@ -87,24 +88,24 @@ function Home() {
         <Filter />
       </div>
       
-      
       <div>{/* <FlyCart /> */}</div>
       {vacio.length > 0 && (
         <div>
           <h2 className="text-center mt-5">{vacio}</h2>
         </div>
       )}
+      {products.length > 0 ?
       <div className="d-flex justify-content-center mt-4">
         <div className={cart.length === 0 ? "cards" : "cards cards-cart"}>
-          {products.length > 0 &&
-            products.map((e) => {
+            {products.map((e) => {
               return <Card key={e.id} product={e} />;
-            })
-            
-            }
+            })}
+            </div>
+        
         </div>
+            : <Loader />
+            }
         {cart.length > 0 && <FlyCart />}
-      </div>
     </div>
   );
 }

@@ -27,13 +27,13 @@ function Filter() {
 
   return (
     <div className="">
-      <div className="d-flex justify-content-center mt-4">
-      <select onChange={handleFilterOrd} className="m-2">
-        <option>Prices</option>
-        <option value="Less expensive" >
+      <div className="mt-4 mb-3" style={{width:'10%', display:'block', margin:'auto'}}>
+      <select  onChange={handleFilterOrd} className="form-select form-select-sm size 10" aria-label=".form-select-sm example">
+        <option  className="border-0">Prices</option>
+        <option  className="border-0" value="Less expensive" >
           Less expensive
         </option>
-        <option value="More expensive" >
+        <option className="border-0" value="More expensive" >
           More expensive
         </option>
       </select>
