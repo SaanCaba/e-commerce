@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useHistory } from "react-router-dom";
 import GoogleButton from 'react-google-button'
@@ -24,15 +24,25 @@ function Login() {
 		setData({ ...data, [e.currentTarget.name]: e.currentTarget.value });
 	};
     const history = useHistory()
+
+  let token = localStorage.getItem("token");
+
+
+    const getUserLoc = JSON.parse(localStorage.getItem('userLog') as string)
+
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		try {
+            localStorage.removeItem('token')
+            localStorage.removeItem('userLog')
 			const url = "http://localhost:8080/api/auth";
 			const { data: res } = await axios.post(url, data);
 			// el token del back, para el usuario
             localStorage.setItem("token", res.data.token)
             console.log(res.data.user)
             dispatch(addUser(res.data.user))
+            console.log('jajajajajajaj')
+            localStorage.setItem('userLog', JSON.stringify(res.data.user.firstName))
             // window.location.href = "/"
             history.push('/')
 		} catch (error) {
@@ -48,16 +58,24 @@ function Login() {
 	};
 
     const googleAuth = async () => {
-		window.open(
+        localStorage.setItem('validateG', 'yes')
+        localStorage.removeItem('token')
+        localStorage.removeItem('userLog')
+	 window.open(
 			`http://localhost:8080/auth/google/callback`,
 			"_self"
 		);
-        const url = `http://localhost:8080/auth/login/success`;
-        const { data } = await axios.get(url, { withCredentials: true });
-      dispatch(addUser(data))
-      console.log(data.token)
-      localStorage.setItem('token', data.token)
+      localStorage.setItem('token', 'dasijdiasjdijsaidjasid')
+
 	};
+
+    console.log(getUserLoc)
+
+    // useEffect(() => {
+    //     if(token){
+    //         history.push('/')
+    //     }
+    // }, [token])
 
   return (
     <div className="vh-100  row">
@@ -93,17 +111,16 @@ function Login() {
 							Sign In
 						</button>
                         </div>
-                        <div className="mt-3 d-flex justify-content-center">
-                <button className="border-0 p-2 bg-transparent" onClick={googleAuth}>
-						{/* <img style={{width:'30px', marginRight:'20px'}} src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png" alt="google icon" /> */}
-						{/* <span>Sign in with Google</span> */}
-					<GoogleButton label="Iniciar sesión con Google" />
-                    </button>
-                </div>
+                        
                     </div>
             </div>
 
             </form>
+            <div className="mt-3 d-flex justify-content-center">
+                <button className="border-0 p-2 bg-transparent" onClick={googleAuth}>
+					<GoogleButton label="Iniciar sesión con Google" />
+                    </button>
+                </div>
             <div className="text-light">
                 <h2 className="text-center title-log mt-4 h2">You don't have account?</h2>
                 <div className="d-flex justify-content-center mt-4">

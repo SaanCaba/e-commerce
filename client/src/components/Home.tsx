@@ -33,9 +33,10 @@ type States = {
   update: boolean;
 };
 
-function Home({ userDetails }: any) {
-  const user = userDetails;
+function Home() {
   // console.log(user)
+
+  const [loader, setLoader] = useState(false)
 
   let token = localStorage.getItem("token");
   let history = useHistory();
@@ -59,19 +60,34 @@ function Home({ userDetails }: any) {
     if (response.data !== null && products.length === 0) {
       dispatch(getProducts(response.data));
     }
+    if(products.length > 0){
+      setLoader(true)
+    }else{
+      setLoader(false)
+    }
     dispatch(update());
   }, [response.data, update2]);
 
-  const [challengesData, setChallengesData] = useState("none");
+
+  const LoaderSkeleton = () => {
+    return(
+      <>
+      <Skeleton />
+      </>
+    )
+  }
 
   return (
     <div className="cont-main-home min-vh-100">
+      
       <div className="d-flex justify-content-center">
         <SearchBar />
       </div>
       <div className="">
         <Filter />
       </div>
+      
+      
       <div>{/* <FlyCart /> */}</div>
       {vacio.length > 0 && (
         <div>
@@ -83,7 +99,9 @@ function Home({ userDetails }: any) {
           {products.length > 0 &&
             products.map((e) => {
               return <Card key={e.id} product={e} />;
-            })}
+            })
+            
+            }
         </div>
         {cart.length > 0 && <FlyCart />}
       </div>

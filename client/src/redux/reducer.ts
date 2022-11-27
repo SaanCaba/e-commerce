@@ -13,6 +13,7 @@ type DataProduct = {
 
 
 type Action = {
+    // sacar este any
     payload?: any,
     type: string | Array<DataProduct>
 }

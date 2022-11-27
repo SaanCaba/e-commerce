@@ -1,4 +1,4 @@
-import { DataProduct, DataProductType } from "../interface/interface"
+import { DataProduct, DataProductType, UserInfo } from "../interface/interface"
 
 export const ADD_CART = "ADD_CART"
 export const SEARCH_PRODUCT = "SEARCH_PRODUCT"
@@ -114,7 +114,7 @@ export function cancel(){
     }
 }
 
-export function addUser (user:any){
+export function addUser (user: UserInfo){
     return{
         type:"GET_USER",
         payload: user

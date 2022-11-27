@@ -3,8 +3,6 @@ import axios from "axios";
 import { Link, useHistory } from "react-router-dom";
 import { Error } from "../../interface/interface";
 import '../styles/Register.css'
-import { addUser } from "../../redux/actions";
-import { useDispatch } from "react-redux";
 import {IoMdArrowRoundBack} from 'react-icons/io'
 
 export const Register = () => {
@@ -16,7 +14,6 @@ export const Register = () => {
 	});
 	const [error, setError] = useState("");
 	const history = useHistory()
-    const dispatch = useDispatch()
 
 	const handleChange = (e : React.FormEvent<HTMLInputElement>) => {
 		setData({ ...data, [e.currentTarget.name]: e.currentTarget.value });

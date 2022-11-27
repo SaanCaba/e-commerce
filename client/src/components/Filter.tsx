@@ -1,34 +1,12 @@
 import React, {useEffect, useState} from "react";
-import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import {  filterProducts, filterProductsByPrice} from "../redux/actions";
+import { FilterData } from "../interface/interface";
+import {  filterProducts} from "../redux/actions";
 
-type DataProduct = {
-  id: number
-  description: string
-  category: string
-  image: string
-  price: number
-  rating: {
-    rate: number 
-    count: number
-  }
-  title: string
 
-}
 
-type FilterData = {
-  info : string
-}
-
-type States = {
-  cart: Array<DataProduct> 
-  products: Array<DataProduct> 
-  vacio : string
-}
 
 function Filter() {
-
 
   const [filters, setFilters] = useState<string[] | FilterData[]>([])
 
@@ -39,7 +17,7 @@ function Filter() {
 
   }
 
-  const handleFilterCategory = (e: React.MouseEvent<HTMLElement>, id:any) => {
+  const handleFilterCategory = (e: React.MouseEvent<HTMLElement>, id: string) => {
     const text = document.getElementById(id)?.innerText.toLowerCase()
     if(text !== undefined){
       dispatch(filterProducts(text))

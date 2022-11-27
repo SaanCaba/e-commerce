@@ -10,30 +10,40 @@ import { useDispatch } from 'react-redux';
 import { addUser } from './redux/actions'
 import { useSelector } from 'react-redux';
 import { UserInfo } from './interface/interface';
+import swal from 'sweetalert';
 
 
 function App() {
   const [user, setUser] = useState(null)
   const dispatch = useDispatch()
   const userRedux = useSelector((state: UserInfo) => state.user)
-  
+  const getUserLoc = JSON.parse(localStorage.getItem('userLog') as string)
+  const getValidate = localStorage.getItem('validateG')
+
 
   const getUser = async () => {
+    // log con google
 		try {
 			const url = `http://localhost:8080/auth/login/success`;
 			const { data } = await axios.get(url, { withCredentials: true });
-			setUser(data.user._json);
-      dispatch(addUser(data.user._json))
+    await  localStorage.setItem('validateG', 'no')
+     await localStorage.setItem('token', data.token)
+      console.log(getUserLoc)
+      localStorage.setItem('userLog', JSON.stringify(data.user._json.name))
+      window.location.reload()
+    return;
 		} catch (err) {
 			console.log(err);
+      localStorage.removeItem('token')
+      localStorage.removeItem('userLog')
 		}
 	};
   
-	useEffect(() => {
-    if(user === null){
-      getUser()
+
+	useEffect(  () => {
+    if(getValidate === 'yes'){
+    (async () => await getUser())()
     }
-    
 	}, []);
   
 
@@ -43,7 +53,7 @@ function App() {
       <Switch>
         <Route exact path='/'>
         <NavBar />
-        <Home userDetails={userRedux !== null ? userRedux : null} />
+        <Home />
         </Route>
         {/* <Route exact path='/' component={Home} /> */}
         <Route path="/signup" exact component={Register} />

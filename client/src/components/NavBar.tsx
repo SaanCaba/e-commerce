@@ -14,20 +14,21 @@ function NavBar() {
 //   const cart = useSelector((state : Cart ) => state.cart)
 
 const user = useSelector((state: UserInfo) => state.user)
-
+const getUserLoc = localStorage.getItem('userLog')
 const token = localStorage.getItem('token')
 
 const history = useHistory()
 
 const handleLogout = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem('userLog')
     window.open(`http://localhost:8080/auth/logout`, "_self");
-    window.location.reload();
 };
 
-const handleLogin = () => {
-    return history.push('/login')
-}
+
+// const handleLogin = () => {
+//     return history.push('/login')
+// }
 
   return (
     <div className='bg-transparent p-2 nav-cont'>
@@ -48,7 +49,7 @@ const handleLogin = () => {
                
             </div>
             <div className='col-md-1 '>
-              <span className='m-1'><FaUser color='white' /></span> <span className='h6 text-light'>{user.firstName || user.given_name}</span>  
+              <span className='m-1'><FaUser color='white' /></span> <span className='h6 text-light'>{getUserLoc}</span>  
             </div>
             
         </div>

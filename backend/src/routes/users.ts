@@ -23,7 +23,7 @@ router.post("/", async (req: Request, res: Response) => {
 
         const salt = await bcrypt.genSalt(Number(process.env.SALT))
         const hashPassword = await bcrypt.hash(req.body.password, salt)
-
+        User
         // guardamos el user con la contraseña hasheada
         await new User({...req.body, password: hashPassword}).save();
         res.status(201).send({message: "User created succesfully"})

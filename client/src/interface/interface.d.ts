@@ -72,3 +72,7 @@ export type UserInfo = {
     email: string
     } 
 }
+
+export type FilterData = {
+    info : string
+  }
