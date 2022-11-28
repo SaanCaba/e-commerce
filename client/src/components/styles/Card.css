@@ -13,6 +13,12 @@
     object-fit: contain;
     margin-left: 10px;
     margin: auto;
+    transition:200ms ease-in-out;
+}
+
+.card-img:hover{
+    scale: 1.03;
+    border-radius: 7px;
 }
 
 .card-cont{
@@ -21,6 +27,18 @@
     display: block;
     margin: auto;
     background-color: rgb(244, 243, 243);
+    animation: render-card 2s ease-in;
+}
+
+
+@keyframes render-card{
+    0%{
+        
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
 }
 
 .btn-hover{
@@ -36,4 +54,11 @@
 
 .all-cards{
     z-index: 1;
+}
+
+@media (max-width:1600px){
+    .cards{
+        grid-template-columns: 1fr  1fr;
+
+    }
 }

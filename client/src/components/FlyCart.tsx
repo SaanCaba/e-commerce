@@ -5,8 +5,9 @@ import {AiOutlineShoppingCart} from 'react-icons/ai'
 import './styles/FlyCart.css'
 import {FlyCartItem} from './FlyCartItem'
 import { useDispatch } from 'react-redux'
-import { addTotal, cancel, lessTotal, resetCart, valorTotal } from '../redux/actions'
+import { addTotal, cancel, lessTotal, resetCart, setPayment, valorTotal } from '../redux/actions'
 import swal from 'sweetalert'
+import { Link } from 'react-router-dom'
 
 function FlyCart() {
     const flyCart = useSelector((state:SeeCart) => state.seeCart)
@@ -41,8 +42,13 @@ function FlyCart() {
             if (willDelete) {
               swal("Eliminado!", "¡Ahora puedes seguir con tu compra!", "success");
               dispatch(cancel())
+              dispatch(setPayment(false))
             }
           });
+    }
+
+    const handlePayment = () => {
+        dispatch(setPayment(true))
     }
 
     return (
@@ -66,8 +72,13 @@ function FlyCart() {
                         </div>
                     )
                 })}
-                <div className='d-flex justify-content-center cont-total-cart'>
+                <div className='bg-dark cont-total-cart'>
+                <div className='d-flex justify-content-center cont-total-item-cart rounded'>
                 <span className='mr-2' >Total: </span><span className='total-price'>${total}</span>
+                </div>
+                <div className='d-flex justify-content-center cont-comprar mt-2'>
+                    <span className='h5 p-2 rounded text-light text-comprar text-center ' onClick={handlePayment} >Comprar</span>
+                </div>
                 </div>
             </div>
         )

@@ -76,3 +76,7 @@ export type UserInfo = {
 export type FilterData = {
     info : string
   }
+
+export type Payment = {
+    payment: boolean
+}

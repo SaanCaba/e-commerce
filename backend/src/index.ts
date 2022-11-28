@@ -8,10 +8,14 @@ const cookieSession = require("cookie-session");
 const userRoutes = require('./routes/users')
 const authRoutes = require('./routes/auth')
 const authRouteG = require("./routes/authPs");
+const checkout = require("./routes/checkout")
 const passportStrategy = require("./passport");
 
 
 connection()
+
+
+
 
 app.use(
 	cookieSession({
@@ -41,6 +45,7 @@ app.use(
 app.use("/api/users", userRoutes)
 app.use("/api/auth", authRoutes)
 app.use("/auth", authRouteG);
+app.use("/checkout", checkout)
 
 const port = process.env.PORT || 8080
 

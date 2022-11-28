@@ -11,6 +11,7 @@ import { addUser } from './redux/actions'
 import { useSelector } from 'react-redux';
 import { UserInfo } from './interface/interface';
 import swal from 'sweetalert';
+import Pago from './components/Stripe/Pago';
 
 
 function App() {

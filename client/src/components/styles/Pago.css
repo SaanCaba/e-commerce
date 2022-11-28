@@ -1,0 +1,19 @@
+.cont-main-payment{
+    width: 330px;
+    position: fixed;
+    left: 1%;
+    bottom: 40%;
+    animation: pay 2s ease-in-out;
+}
+
+@keyframes pay{
+    0%{
+        opacity: 0;
+        left: -15%;
+    }
+    100%{
+        opacity: 1;
+        left: 1%;
+    }
+
+}

@@ -1,0 +1,10 @@
+.text-comprar{
+    width: 100%;
+    cursor: pointer;
+    transition: 200ms ease-in-out;
+    background-color: rgb(15, 163, 49);
+}
+
+.text-comprar:hover{
+    background-color: rgb(34, 109, 34);
+}

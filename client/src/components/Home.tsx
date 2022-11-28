@@ -13,6 +13,7 @@ import Skeleton from 'react-loading-skeleton'
 import "./styles/Home.css";
 import "react-loading-skeleton/dist/skeleton.css"
 import Loader from "./Loader";
+import Pago from "./Stripe/Pago";
 
 type DataProduct = {
   id: number;
@@ -84,10 +85,7 @@ function Home() {
       <div className="d-flex justify-content-center">
         <SearchBar />
       </div>
-      <div className="">
         <Filter />
-      </div>
-      
       <div>{/* <FlyCart /> */}</div>
       {vacio.length > 0 && (
         <div>
@@ -106,6 +104,8 @@ function Home() {
             : <Loader />
             }
         {cart.length > 0 && <FlyCart />}
+        <Pago />
+    
     </div>
   );
 }

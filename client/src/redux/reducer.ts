@@ -29,6 +29,7 @@ type States = {
     total: number 
     lessTot:boolean
     user?:{}
+    payment: boolean
 }
 
 const initial_state : States = {
@@ -41,7 +42,8 @@ const initial_state : States = {
     seeCart: false,
     total: 0,
     lessTot: false,
-    user:{}
+    user:{},
+    payment: false
 }
 
 
@@ -191,6 +193,11 @@ function rootReducer(state = initial_state, action: Action) {
                 return{
                     ...state,
                     user: action.payload
+                }
+            case "SET_PAYMENT":
+                return{
+                    ...state,
+                    payment:action.payload
                 }
            default: 
             return state

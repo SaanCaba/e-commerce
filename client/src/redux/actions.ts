@@ -120,3 +120,10 @@ export function addUser (user: UserInfo){
         payload: user
     }
 }
+
+export function setPayment(payload: boolean){
+    return{
+        type:"SET_PAYMENT",
+        payload: payload
+    }
+}

@@ -30,6 +30,7 @@ router.post("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         }
         const salt = yield bcrypt.genSalt(Number(process.env.SALT));
         const hashPassword = yield bcrypt.hash(req.body.password, salt);
+        User;
         // guardamos el user con la contraseña hasheada
         yield new User(Object.assign(Object.assign({}, req.body), { password: hashPassword })).save();
         res.status(201).send({ message: "User created succesfully" });
