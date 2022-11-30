@@ -35,7 +35,7 @@ function Login() {
 		try {
             localStorage.removeItem('token')
             localStorage.removeItem('userLog')
-			const url = "http://localhost:8080/api/auth";
+			const url = "https://deploy-back-production.up.railway.app/api/auth";
 			const { data: res } = await axios.post(url, data);
 			// el token del back, para el usuario
             localStorage.setItem("token", res.data.token)
@@ -62,7 +62,7 @@ function Login() {
         localStorage.removeItem('token')
         localStorage.removeItem('userLog')
 	 window.open(
-			`http://localhost:8080/auth/google/callback`,
+			`https://deploy-back-production.up.railway.app/auth/google/callback`,
 			"_self"
 		);
       localStorage.setItem('token', 'dasijdiasjdijsaidjasid')
@@ -71,11 +71,7 @@ function Login() {
 
     console.log(getUserLoc)
 
-    // useEffect(() => {
-    //     if(token){
-    //         history.push('/')
-    //     }
-    // }, [token])
+
 
   return (
     <div className="vh-100  row">

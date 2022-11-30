@@ -22,7 +22,7 @@ export const Register = () => {
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		try {
-			const url = "http://localhost:8080/api/users";
+			const url = "https://deploy-back-production.up.railway.app/api/users";
 			const { data: res } = await axios.post(url, data);
 			history.push("/login");
 			console.log(res.message);
