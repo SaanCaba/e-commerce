@@ -30,6 +30,7 @@ const handleLogout = () => {
       localStorage.removeItem("token");
       localStorage.removeItem('userLog')
       // window.open(`https://deploy-back-production.up.railway.app/auth/logout`, "_self");
+      history.push('/login')
     }
   })
   
