@@ -83,9 +83,9 @@ function Login() {
         <div className="text-light  cont-1-log col-3 d-flex align-items-center justify-content-center">
             <div className="div-back">
             <div className="d-flex flex-column blur-back">
+            <button onClick={xd}>xd</button>
             <form onSubmit={handleSubmit}>
             <h2 className="title-log">Login into your account</h2>
-            <button onClick={xd}>xd</button>
             <div className="d-flex justify-content-center">
             <div className="d-flex flex-column ">
 						<input
