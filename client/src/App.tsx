@@ -25,7 +25,7 @@ function App() {
   const getUser = async () => {
     // log con google
 		try {
-			const url = `http://deploy-back-production.up.railway.app/auth/login/success`;
+			const url = `https://deploy-back-production.up.railway.app/auth/login/success`;
 			const { data } = await axios.get(url, { withCredentials: true });
     await  localStorage.setItem('validateG', 'no')
      await localStorage.setItem('token', data.token)
@@ -42,9 +42,7 @@ function App() {
   
 
 	useEffect(  () => {
-    if(getValidate === 'yes'){
     getUser()
-    }
 	}, []);
   
 

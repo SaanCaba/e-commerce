@@ -62,14 +62,13 @@ function Login() {
         localStorage.removeItem('token')
         localStorage.removeItem('userLog')
 	 window.open(
-			`${process.env.REACT_APP__API_URL}/auth/google/callback`,
+			`https://deploy-back-production.up.railway.app/auth/google/callback`,
 			"_self"
 		);
       localStorage.setItem('token', 'ej')
 
 	};
 
-    console.log(getUserLoc)
 
 
 
