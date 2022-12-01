@@ -57,25 +57,18 @@ function Login() {
 		}
 	};
 
-    const googleAuth = async () => {
-        localStorage.setItem('validateG', 'yes')
-        localStorage.removeItem('token')
-        localStorage.removeItem('userLog')
-	 window.open(
-			`https://deploy-back-production.up.railway.app/auth/google/callback`,
-			"_self"
-		);
-      localStorage.setItem('token', 'ej')
+    // const googleAuth = async () => {
+    //     localStorage.setItem('validateG', 'yes')
+    //     localStorage.removeItem('token')
+    //     localStorage.removeItem('userLog')
+	//  window.open(
+	// 		`https://deploy-back-production.up.railway.app/auth/google/callback`,
+	// 		"_self"
+	// 	);
+    //   localStorage.setItem('token', 'ej')
 
-	};
+	// };
 
-    const xd = async () => {
-        // const url = `https://deploy-back-production.up.railway.app/auth/login/success`;
-		const response = await axios.get('https://deploy-back-production.up.railway.app/auth/login/success', { withCredentials: true });
-    await  localStorage.setItem('validateG', 'no')
-     await localStorage.setItem('token', response.data.token)
-     console.log(response)
-    }
 
 
   return (
@@ -83,7 +76,6 @@ function Login() {
         <div className="text-light  cont-1-log col-3 d-flex align-items-center justify-content-center">
             <div className="div-back">
             <div className="d-flex flex-column blur-back">
-            <button onClick={xd}>xd</button>
             <form onSubmit={handleSubmit}>
             <h2 className="title-log">Login into your account</h2>
             <div className="d-flex justify-content-center">
@@ -117,11 +109,11 @@ function Login() {
             </div>
 
             </form>
-            <div className="mt-3 d-flex justify-content-center">
+            {/* <div className="mt-3 d-flex justify-content-center">
                 <button className="border-0 p-2 bg-transparent" onClick={googleAuth}>
 					<GoogleButton label="Iniciar sesión con Google" />
                     </button>
-                </div>
+                </div> */}
             <div className="text-light">
                 <h2 className="text-center title-log mt-4 h2">You don't have account?</h2>
                 <div className="d-flex justify-content-center mt-4">

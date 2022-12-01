@@ -12,7 +12,6 @@ import { useSelector } from 'react-redux';
 import { UserInfo } from './interface/interface';
 import swal from 'sweetalert';
 import Pago from './components/Stripe/Pago';
-import { userInfo } from 'os';
 
 
 function App() {
@@ -43,10 +42,10 @@ function App() {
   
 
 	// useEffect(  () => {
-  //   if(getUserLoc === null){
-  //     getUser()
+  //   if(getValidate === 'yes'){
+  //   (async () => await getUser())()
   //   }
-	// }, [getUserLoc]);
+	// }, []);
   
 
   return (
