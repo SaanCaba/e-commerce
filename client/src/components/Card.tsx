@@ -60,7 +60,6 @@ function Card({product}: DataProductType) {
         
         </div>
     <Toaster  />
-
 </div>
     </div>
   )
