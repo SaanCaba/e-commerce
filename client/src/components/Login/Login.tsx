@@ -70,11 +70,11 @@ function Login() {
 	};
 
     const xd = async () => {
-        const url = `https://deploy-back-production.up.railway.app/auth/login/success`;
-		const { data } = await axios.get(url, { withCredentials: true });
+        // const url = `https://deploy-back-production.up.railway.app/auth/login/success`;
+		const response = await axios.get('https://deploy-back-production.up.railway.app/auth/login/success', { withCredentials: true });
     await  localStorage.setItem('validateG', 'no')
-     await localStorage.setItem('token', data.token)
-     console.log(data)
+     await localStorage.setItem('token', response.data.token)
+     console.log(response)
     }
 
 
