@@ -62,7 +62,7 @@ function Login() {
         localStorage.removeItem('token')
         localStorage.removeItem('userLog')
 	 window.open(
-			`deploy-back-production.up.railway.app/auth/google/callback`,
+			`https://deploy-back-production.up.railway.app/auth/google/callback`,
 			"_self"
 		);
       localStorage.setItem('token', 'ej')
