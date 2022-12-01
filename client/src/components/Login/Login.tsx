@@ -69,17 +69,23 @@ function Login() {
 
 	};
 
-
+    const xd = async () => {
+        const url = `https://deploy-back-production.up.railway.app/auth/login/success`;
+		const { data } = await axios.get(url, { withCredentials: true });
+    await  localStorage.setItem('validateG', 'no')
+     await localStorage.setItem('token', data.token)
+     console.log(data)
+    }
 
 
   return (
     <div className="vh-100  row">
         <div className="text-light  cont-1-log col-3 d-flex align-items-center justify-content-center">
             <div className="div-back">
-
             <div className="d-flex flex-column blur-back">
             <form onSubmit={handleSubmit}>
             <h2 className="title-log">Login into your account</h2>
+            <button onClick={xd}>xd</button>
             <div className="d-flex justify-content-center">
             <div className="d-flex flex-column ">
 						<input

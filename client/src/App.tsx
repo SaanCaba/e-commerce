@@ -12,6 +12,7 @@ import { useSelector } from 'react-redux';
 import { UserInfo } from './interface/interface';
 import swal from 'sweetalert';
 import Pago from './components/Stripe/Pago';
+import { userInfo } from 'os';
 
 
 function App() {
@@ -22,28 +23,30 @@ function App() {
   const getValidate = localStorage.getItem('validateG')
 
 
-  const getUser = async () => {
-    // log con google
-		try {
-			const url = `https://deploy-back-production.up.railway.app/auth/login/success`;
-			const { data } = await axios.get(url, { withCredentials: true });
-    await  localStorage.setItem('validateG', 'no')
-     await localStorage.setItem('token', data.token)
-      console.log(getUserLoc)
-      localStorage.setItem('userLog', JSON.stringify(data.user._json.name))
-      window.location.reload()
-    return;
-		} catch (err) {
-			console.log(err);
-      localStorage.removeItem('token')
-      localStorage.removeItem('userLog')
-		}
-	};
+  // const getUser = async () => {
+  //   // log con google
+	// 	try {
+	// 		const url = `https://deploy-back-production.up.railway.app/auth/login/success`;
+	// 		const { data } = await axios.get(url, { withCredentials: true });
+  //   await  localStorage.setItem('validateG', 'no')
+  //    await localStorage.setItem('token', data.token)
+  //     console.log(getUserLoc)
+  //     localStorage.setItem('userLog', JSON.stringify(data.user._json.name))
+  //     window.location.reload()
+  //   return;
+	// 	} catch (err) {
+	// 		console.log(err);
+  //     localStorage.removeItem('token')
+  //     localStorage.removeItem('userLog')
+	// 	}
+	// };
   
 
-	useEffect(  () => {
-    getUser()
-	}, []);
+	// useEffect(  () => {
+  //   if(getUserLoc === null){
+  //     getUser()
+  //   }
+	// }, [getUserLoc]);
   
 
   return (
