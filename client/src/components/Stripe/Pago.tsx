@@ -23,20 +23,7 @@ export default function Pago() {
   const dispatch = useDispatch()
   const payment = useSelector((state: Payment ) => state.payment)
 
-  const handleDelete = () => {
-    swal({
-      title: "¿Estás seguro?",
-      text: "¿Quieres cancelar tu compra?",
-      icon: "warning",
-      dangerMode: true,
-    })
-    .then(willDelete => {
-      if (willDelete) {
-        swal("Eliminado!", "", "success");
-        dispatch(setPayment(false))
-      }
-    });
-  }
+
 
   return (
     <div>
