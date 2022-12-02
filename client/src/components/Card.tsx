@@ -49,7 +49,7 @@ function Card({product}: DataProductType) {
             <div className='' style={{height: '70px'}}>
             <span className='h6 mt-2 '>{product.title}</span>
             </div>
-        <span className='text-center mb-3 text-uppercase mt-3'>{product.category}</span>
+        <span className='text-center mb-3 text-uppercase mt-3'>Categoría: {product.category}</span>
         <div className='d-flex justify-content-center'>
             <span className='text-success price h4 mt-3' >${product.price}</span>
         </div>
