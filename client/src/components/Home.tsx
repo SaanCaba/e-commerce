@@ -80,7 +80,7 @@ function Home() {
   }
 
   return (
-    <div className="cont-main-home min-vh-100">
+    <div className="cont-main-home min-vh-100 mb-5">
       
       <div className="d-flex justify-content-center">
         <SearchBar />
@@ -105,7 +105,6 @@ function Home() {
             }
         {cart.length > 0 && <FlyCart />}
         <Pago />
-    
     </div>
   );
 }

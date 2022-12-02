@@ -41,7 +41,7 @@ export const Register = () => {
 
 
 	return (
-		<div>
+		<div className="w-100 cont-main-register">
 			<div className="cont-register vh-100 " >
 				<div className="cont-bk d-flex justify-content-center align-items-center" >
                     <div className="d-flex flex-column">

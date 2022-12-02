@@ -84,7 +84,7 @@ export const FlyCartItem: React.FC<PropsItem>   = ( {product}: PropsItem ) : JSX
       
       </div>
       <div className='d-flex justify-content-center'>
-        <button className='btn btn-danger me-2 text-light' onClick={() => handleClickRemove() } >DELETE ITEM</button>
+        <button className='btn-delete border-0 rounded p-1 me-2 text-light' onClick={() => handleClickRemove() } >DELETE ITEM</button>
       </div>
       
     </div>

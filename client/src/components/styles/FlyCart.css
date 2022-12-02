@@ -33,9 +33,27 @@
     }
 }
 
+.cont-total-price{
+    padding: 8px;
+    position: sticky;
+    top:0%;
+    font-weight: bold;
+}
 
+/* .cont-main-cart{
+    position: sticky;
+    top:0%;
+} */
 
+.btn-compra{
+    color:white;
+    transition: 300ms ease;
+    background-color: rgb(52, 171, 52);
+}
 
+.btn-compra:hover{
+    background-color: rgb(16, 84, 16);
+}
 
 
 .cont-fly-cart::-webkit-scrollbar {
@@ -69,6 +87,12 @@ width: 100%;
 z-index:0;
 }
 
+.cont-main-tt{
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+}
+
 .cont-total-cart{
     padding: 10px;
     border: none;
@@ -77,10 +101,8 @@ z-index:0;
     display: block;
     user-select: none;
     width: 100%;
-    
     bottom: 0%;
     left: 30%;
-    position: sticky;
 }
 
 .cont-total-item-cart{

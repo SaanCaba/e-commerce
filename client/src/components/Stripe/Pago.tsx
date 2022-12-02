@@ -44,7 +44,6 @@ export default function Pago() {
         payment === true ? 
         <div className='cont-main-payment'>
       <Elements stripe={stripePromise}>
-      <button onClick={handleDelete} className='w-100 border-0 bg-danger text-light rounded' >X</button>
     <CheckoutForm />
       </Elements>
       </div>

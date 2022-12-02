@@ -1,6 +1,15 @@
+.cont-main-register{
+    background-image: url(https://images.unsplash.com/photo-1443884590026-2e4d21aee71c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1443&q=80);
+    background-size: contain;
+    background-size: cover;
+    
+}
+
+
 .cont-register{
     background-size: cover;
     font-family: 'Ubuntu', sans-serif;
+    backdrop-filter: brightness(30%);
 }
 
 .cont-bk{

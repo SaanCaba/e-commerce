@@ -58,13 +58,23 @@ function FlyCart() {
             <div className='cont-fly-cart'>
 
                 <div className='d-flex justify-content-start'>
-                    <button className=' border-0 m-1 rounded bg-danger text-light' onClick={() => handleCancel()}>X</button>
+                    <button className='btn-delete border-0 m-1 rounded  text-light' onClick={() => handleCancel()}>X</button>
                 </div>
-
                 <div className='m-1 d-flex justify-content-center'>
                 <AiOutlineShoppingCart color='white' size={28} /><span className='bg-success text-light p-1 h6 rounded-circle'>{cart.length}</span>
                 </div>
-                
+                <div className='cont-main-cart mb-3'>
+                <div className=' cont-total-price d-flex justify-content-center rounded'>
+                    <div className='flex-column bg-light p-1 rounded'>
+                    <div className=''>
+                    <span className='text-dark'>Total:</span>   <span className='text-success'>$</span> <span className='text-dark'>{total}</span>
+                    </div>
+                    </div>
+                </div>
+                <div className='d-flex justify-content-center' >
+                    <button className='w-75 border-0 p-1 rounded btn-compra text-light' onClick={handlePayment} style={{fontWeight:'bold'}} >Comprar</button>
+                </div>
+                </div>
                 {cart.map((e, i) => {
                     return(
                         <div key={i} className='m-1 cont-fly-cart-item' >
@@ -72,6 +82,7 @@ function FlyCart() {
                         </div>
                     )
                 })}
+                {/* <div className='cont-main-tt'>
                 <div className='bg-dark cont-total-cart'>
                 <div className='d-flex justify-content-center cont-total-item-cart rounded'>
                 <span className='mr-2' >Total: </span><span className='total-price'>${total}</span>
@@ -80,6 +91,8 @@ function FlyCart() {
                     <span className='h5 p-2 rounded text-light text-comprar text-center ' onClick={handlePayment} >Comprar</span>
                 </div>
                 </div>
+                </div> */}
+
             </div>
         )
         : ''

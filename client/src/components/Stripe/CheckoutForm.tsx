@@ -32,7 +32,7 @@ function CheckoutForm() {
             .then(async (success) => {
                 if(success){
                     setLoader(true)
-                    const {data} =  await axios.post('https://deploy-back-production.up.railway.app/checkout', {
+                    const {data} =  await axios.post('http://localhost:8080/checkout', {
                         id: id,
                         //el precio tiene que ser mayor a 0.50 USD
                         amount: 10000
@@ -60,9 +60,25 @@ function CheckoutForm() {
 
     }
 
+    const handleDelete = () => {
+      swal({
+        title: "¿Estás seguro?",
+        text: "¿Quieres cancelar tu compra?",
+        icon: "warning",
+        dangerMode: true,
+      })
+      .then(willDelete => {
+        if (willDelete) {
+          swal("Eliminado!", "", "success");
+          dispatch(setPayment(false))
+        }
+      });
+    }
+
   return (
     <>
     <form onSubmit={handleSubmit} className='card card-body' >
+    <button onClick={handleDelete} className='w-100 border-0 btn-delete text-light rounded' >X</button>
     <div className="container p-4">
         <div className="row">
            <div className='text-dark text-decoration-underline text-center'>
@@ -72,7 +88,7 @@ function CheckoutForm() {
            </div>
         </div>
     </div>
-    <button className='btn btn-success text-comprar' disabled={stripe ? false : true} >
+    <button className='w-75 border-0 p-1 rounded btn-compra text-light w-100' disabled={stripe ? false : true} >
         BUY
     </button>
     {

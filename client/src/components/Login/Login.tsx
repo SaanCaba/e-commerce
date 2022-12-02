@@ -8,7 +8,7 @@ import linkedinLogo from './images/linkedin.png'
 import gitHubLogo from './images/github.png'
 import portfolio from './images/portfoliopic.jpg'
 import '../styles/Login.css'
-import { addUser } from "../../redux/actions";
+import { addUser, cancel, setPayment } from "../../redux/actions";
 import { useDispatch } from "react-redux";
 
 
@@ -35,15 +35,15 @@ function Login() {
 		try {
             localStorage.removeItem('token')
             localStorage.removeItem('userLog')
-			const url = "https://deploy-back-production.up.railway.app/api/auth";
+			const url = "http://localhost:8080/api/auth";
 			const { data: res } = await axios.post(url, data);
 			// el token del back, para el usuario
             localStorage.setItem("token", res.data.token)
-            console.log(res.data.user)
             dispatch(addUser(res.data.user))
-            console.log('jajajajajajaj')
             localStorage.setItem('userLog', JSON.stringify(res.data.user.firstName))
             // window.location.href = "/"
+            dispatch(cancel())
+            dispatch(setPayment(false))
             history.push('/')
 		} catch (error) {
             const typedError = error as Error

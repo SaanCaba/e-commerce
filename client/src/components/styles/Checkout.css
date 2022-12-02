@@ -8,3 +8,12 @@
 .text-comprar:hover{
     background-color: rgb(34, 109, 34);
 }
+
+.btn-delete{
+    background-color: rgb(205, 74, 74);
+    transition: 300ms ease;
+}
+
+.btn-delete:hover{
+    background-color: rgb(177, 18, 18);
+}
