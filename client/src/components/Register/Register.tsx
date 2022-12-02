@@ -56,7 +56,7 @@ export const Register = () => {
 				</Link>
 				</div>
 					<form onSubmit={handleSubmit}>
-						<h1 className="text-center title-reg">Create Account</h1>
+						<h1 className="text-center title-reg">Crea tu cuenta!</h1>
 						<div className="d-flex flex-column">
                         <input
 							type="text"
@@ -96,7 +96,7 @@ export const Register = () => {
 						/>
 						{error && <div >{error}</div>}
 						<button type="submit" className="btn-reg" >
-							Sing Up
+							Registrate
 						</button>
                         </div>
 					</form>
