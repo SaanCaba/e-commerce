@@ -32,7 +32,7 @@ function CheckoutForm() {
             .then(async (success) => {
                 if(success){
                     setLoader(true)
-                    const {data} =  await axios.post('https://deploy-back-production.up.railway.app/checkout', {
+                    const {data} =  await axios.post('https://b-ycoq.onrender.com/checkout', {
                         id: id,
                         //el precio tiene que ser mayor a 0.50 USD
                         amount: 10000

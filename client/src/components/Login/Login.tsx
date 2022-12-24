@@ -35,7 +35,7 @@ function Login() {
 		try {
             localStorage.removeItem('token')
             localStorage.removeItem('userLog')
-			const url =  "https://deploy-back-production.up.railway.app/api/auth";
+			const url =  "https://b-ycoq.onrender.com/api/auth";
 			const { data: res } = await axios.post(url, data);
 			// el token del back, para el usuario
             localStorage.setItem("token", res.data.token)
